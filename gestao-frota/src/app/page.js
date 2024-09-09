@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -11,7 +10,7 @@ export default function Home() {
             <Link className="text-lg p-2 transition duration-200 hover:text-blue-500" href="/">Motoristas</Link>
           </div>
           
-          <Link className="items-center flex text-lg transition duration-200 hover:bg-blue-500 px-3 rounded-lg" href='#'>Login</Link>
+          <Link className="items-center flex text-lg transition duration-200 hover:bg-blue-500 px-3 rounded-lg" href='/login'>Login</Link>
         </nav>
       </header>
 
