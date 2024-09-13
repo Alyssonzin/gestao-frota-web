@@ -1,7 +1,7 @@
 export default function Input({ ...props }) {
     return (
-        <div>
-            <input {...props} className="text-black p-2 rounded-lg focus:placeholder:text-stone-600 focus:outline-cyan-600 shadow-md w-60" />
-        </div>
+        <label className="flex items-center bg-white text-black rounded-lg w-70 h-10 border-4 border-white focus-within:border-cyan-600">
+            <input {...props} className="focus:outline-none focus:placeholder:text-stone-600 h-full w-full px-1 rounded" />
+        </label>
     )
 }
