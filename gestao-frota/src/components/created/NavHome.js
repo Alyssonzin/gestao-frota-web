@@ -9,7 +9,7 @@ export default function NavHome() {
                 </Link>
 
                 <Link className="text-lg p-1 transition duration-200 hover:text-blue-500" href="/">Veículos</Link>
-                <Link className="text-lg p-1 transition duration-200 hover:text-blue-500" href="/">Motoristas</Link>
+                <Link className="text-lg p-1 transition duration-200 hover:text-blue-500" href="/motoristas">Motoristas</Link>
             </div>
 
             <Link className="items-center flex text-lg transition duration-200 hover:bg-blue-500 px-3 border-2 border-blue-500 rounded-lg" href='/login'>Login</Link>
