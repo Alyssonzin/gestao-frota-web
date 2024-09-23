@@ -12,20 +12,20 @@ export default function CadastrarMotorista() {
 
             <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
 
-                <h1 className="text-3xl font-bold text-center">Cadastro de motoristas</h1>
+                <h1 className="text-3xl font-bold text-center">Cadastro de veículos</h1>
 
                 <form className="flex flex-col space-y-4 justify-center items-center w-1/2">
                     <div className="w-1/2">
-                        <Input type="text" id="cpf" placeholder="CPF"></Input>
+                        <Input type="text" id="modelo" placeholder="Modelo"></Input>
                     </div>
                     <div className="w-1/2">
-                        <Input type="text" id="nome" placeholder="Nome"></Input>
+                        <Input type="text" id="placa" placeholder="Placa"></Input>
                     </div>
                     <div className="w-1/2">
-                        <Input type="text" id="telefone" placeholder="Telefone"></Input>
+                        <Input type="text" id="renavam" placeholder="Renavam"></Input>
                     </div>
                     <div className="w-1/2">
-                        <Input type="text" id="rua" placeholder="Logradouro"></Input>
+                        <Input type="text" id="cor" placeholder="Cor"></Input>
                     </div>
                     <div className="w-1/2">
                         <Input type="text" id="bairro" placeholder="Bairro"></Input>
@@ -33,8 +33,6 @@ export default function CadastrarMotorista() {
 
                     <Link href="#" className="bg-green-500 hover:bg-green-700 transition duration-200 font-bold text-center shadow-md text-white py-2 px-4 rounded w-1/2">Salvar</Link>
                 </form>
-
-
 
             </section>
         </main>
