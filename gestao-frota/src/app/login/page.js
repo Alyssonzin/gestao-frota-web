@@ -6,6 +6,7 @@ import NavHome from "@/components/created/NavHome"
 import InputPassword from "@/components/created/InputPassword"
 
 export default function Login() {
+
     return (
         <>
             <header>
@@ -18,6 +19,7 @@ export default function Login() {
                     <div className="flex flex-col space-y-4">
                         <Input id="usuario" type="text" placeholder="Usuário" />
                         <InputPassword id="senha" placeholder="Senha" />
+                        <input onChange={(e)=>{console.log(e.target.value)}}/>
                     </div>
                     <Link href="#" className="bg-blue-500 hover:bg-blue-700 font-bold text-center py-2 px-4 rounded w-full">Entrar</Link>
                     <Link href='#' className="hover:text-cyan-400 hover:underline">Esqueceu a senha?</Link>

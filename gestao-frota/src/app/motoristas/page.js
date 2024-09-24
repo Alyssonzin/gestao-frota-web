@@ -7,7 +7,7 @@ import Footer from "@/components/created/Footer";
 
 export default function Motoristas() {
     const motoristas = [
-        { id: 1, nome: 'João', cpf: '123.456.789-00' },
+        { id: 1, nome: 'João Paulo Formentin Elias Pavannati', cpf: '123.456.789-00' },
         { id: 2, nome: 'Maria', cpf: '987.654.321-00' },
         { id: 3, nome: 'José', cpf: '456.789.123-00' },
         { id: 4, nome: 'Ana', cpf: '654.321.987-00' },
