@@ -1,11 +1,12 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Table({ headers, columns, data }) {
     const router = useRouter();
-
+    const pathName = usePathname();
+    
     const handleEdit = (id) => {
-        router.push(`/motoristas/${id}`)
+        router.push(`${pathName}/${id}`)
     }
 
     const handleDelete = (id) => {
@@ -23,7 +24,6 @@ export default function Table({ headers, columns, data }) {
                         ))
                     }
                     <th>Ações</th>
-
                 </tr>
             </thead>
             <tbody className="text-center">
