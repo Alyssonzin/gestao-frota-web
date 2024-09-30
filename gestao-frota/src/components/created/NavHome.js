@@ -8,7 +8,7 @@ export default function NavHome() {
                     <Image src="/logomarca.jpg" alt="Logo" width={50} height={50} />
                 </Link>
 
-                <Link className="text-lg p-1 transition duration-200 hover:text-blue-500" href="/">Veículos</Link>
+                <Link className="text-lg p-1 transition duration-200 hover:text-blue-500" href="/veiculos">Veículos</Link>
                 <Link className="text-lg p-1 transition duration-200 hover:text-blue-500" href="/motoristas">Motoristas</Link>
             </div>
 

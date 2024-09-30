@@ -30,7 +30,7 @@ export default function Table({ headers, columns, data }) {
                 {
                     //Se data não for vazio, cria uma linha pra cada item.
                     data ? data.map((item) => (
-                        <tr key={item.id} className="border-t">
+                        <tr key={item.id} className="border-t h-14">
                             {
                                 //Columns são as colunas deste item no banco de dados, diferente de headers.
                                 columns.map((coluna) => (
@@ -38,8 +38,8 @@ export default function Table({ headers, columns, data }) {
                                 ))
                             }
                             <td className="space-x-4 w-1/4">
-                                <button onClick={() => { handleEdit(item.id) }} className="bg-blue-500 hover:bg-blue-600 transition duration-200 shadow-md rounded-md text-white p-2">Editar</button>
-                                <button onClick={() => { handleDelete(item.id) }} className="bg-red-500 hover:bg-red-600 transition duration-200 shadow-md rounded-md text-white p-2">Excluir</button>
+                                <button onClick={() => { handleEdit(item.id) }} className="bg-blue-500 hover:bg-blue-600 transition duration-200 shadow-md rounded-md text-white select-none p-2">Editar</button>
+                                <button onClick={() => { handleDelete(item.id) }} className="bg-red-500 hover:bg-red-600 transition duration-200 shadow-md rounded-md text-white select-none p-2">Excluir</button>
                             </td>
                         </tr>
                     )) : <tr><td colSpan={headers.length}>Nenhum dado encontrado</td></tr>
