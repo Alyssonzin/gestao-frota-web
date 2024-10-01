@@ -9,17 +9,16 @@ export default function AtualizarVeiculo({ params }) {
     const { id } = params;
 
     const [veiculo, setVeiculo] = useState({
-        modelo: '',
-        placa: '',
-        renavam: '',
-        cor: ''
+        modelo: 'Fusca',
+        placa: 'miau123',
+        renavam: '111111',
+        cor: 'branco'
     });
 
     useEffect(() => {
         const getVeiculo = async () => {
             console.log('buscando veiculo pelo id...');
 
-            setVeiculo(undefined);
         }
 
         getVeiculo();
@@ -55,6 +54,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="modelo"
                                 id="modelo"
                                 placeholder="Modelo"
+                                value={veiculo.modelo}
                             />
                         </div>
                         <div className="w-1/2">
@@ -64,6 +64,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="placa"
                                 id="placa"
                                 placeholder="Placa"
+                                value={veiculo.placa || ''}
                             />
                         </div>
                         <div className="w-1/2">
@@ -73,6 +74,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="renavam"
                                 id="renavam"
                                 placeholder="renavam"
+                                value={veiculo.renavam || ''}
                             />
                         </div>
                         <div className="w-1/2">
@@ -82,6 +84,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="cor"
                                 id="cor"
                                 placeholder="Cor"
+                                value={veiculo.cor || ''}
                             />
                         </div>
                         <button

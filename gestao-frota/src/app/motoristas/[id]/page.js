@@ -9,12 +9,12 @@ export default function AtualizarMotorista({ params }) {
     const { id } = params;
 
     const [motorista, setMotorista] = useState({
-        cpf: '',
-        nome: '',
-        telefone: '',
+        cpf: '154848',
+        nome: 'João',
+        telefone: '9999999',
         endereco: {
-            logradouro: '',
-            bairro: ''
+            logradouro: 'Rua das Flores',
+            bairro: 'Bairro das Flores'
         }
     });
 
@@ -22,12 +22,12 @@ export default function AtualizarMotorista({ params }) {
         const getMotorista = async () => {
             console.log('buscando motorista pelo id...');
 
-            setMotorista(undefined);
+
         }
 
         getMotorista();
     }, [id]);
-    
+
     //Atualiza o estado do motorista conforme o usuário digita
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -56,7 +56,6 @@ export default function AtualizarMotorista({ params }) {
         console.log(motorista);
     }
 
-
     return (
         <>
             <main className="flex h-screen bg-gray-200">
@@ -70,19 +69,21 @@ export default function AtualizarMotorista({ params }) {
                         <div className="w-1/2">
                             <Input
                                 type="text"
-                                name="cpf"
-                                id="cpf"
-                                placeholder="CPF"
+                                name="nome"
+                                id="nome"
+                                placeholder="Nome"
                                 onChange={handleChange}
+                                value={motorista.nome || ''}
                             />
                         </div>
                         <div className="w-1/2">
                             <Input
                                 type="text"
-                                name="nome"
-                                id="nome"
-                                placeholder="Nome"
+                                name="cpf"
+                                id="cpf"
+                                placeholder="CPF"
                                 onChange={handleChange}
+                                value={motorista.cpf || ''}
                             />
                         </div>
                         <div className="w-1/2">
@@ -92,6 +93,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="telefone"
                                 placeholder="Telefone"
                                 onChange={handleChange}
+                                value={motorista.telefone || ''}
                             />
                         </div>
                         <div className="w-1/2">
@@ -101,6 +103,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="logradouro"
                                 placeholder="Rua"
                                 onChange={handleChange}
+                                value={motorista.endereco.logradouro || ''}
                             />
                         </div>
                         <div className="w-1/2">
@@ -110,6 +113,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="bairro"
                                 placeholder="Bairro"
                                 onChange={handleChange}
+                                value={motorista.endereco.bairro || ''}
                             />
                         </div>
 
