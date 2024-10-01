@@ -1,10 +1,12 @@
 "use client";
 import { useRouter, usePathname } from "next/navigation";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 export default function Table({ headers, columns, data }) {
     const router = useRouter();
     const pathName = usePathname();
-    
+
     const handleEdit = (id) => {
         router.push(`${pathName}/${id}`)
     }
@@ -23,7 +25,6 @@ export default function Table({ headers, columns, data }) {
                             <th>{header}</th>
                         ))
                     }
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody className="text-center">
@@ -38,8 +39,25 @@ export default function Table({ headers, columns, data }) {
                                 ))
                             }
                             <td className="space-x-4 w-1/4">
-                                <button onClick={() => { handleEdit(item.id) }} className="bg-blue-500 hover:bg-blue-600 transition duration-200 shadow-md rounded-md text-white select-none p-2">Editar</button>
-                                <button onClick={() => { handleDelete(item.id) }} className="bg-red-500 hover:bg-red-600 transition duration-200 shadow-md rounded-md text-white select-none p-2">Excluir</button>
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger className="text-white">
+                                        <ChevronDown size={25} className="bg-slate-800 rounded-full shadow-md" />
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent>
+                                        <DropdownMenuGroup>
+                                            <DropdownMenuItem
+                                                onClick={() => handleEdit(item.id)}
+                                                className="hover:bg-blue-400 hover:text-white cursor-pointer">
+                                                Editar
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem
+                                                onClick={() => handleDelete(item.id)}
+                                                className="hover:bg-red-600 hover:text-white cursor-pointer">
+                                                Excluir
+                                            </DropdownMenuItem>
+                                        </DropdownMenuGroup>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
                             </td>
                         </tr>
                     )) : <tr><td colSpan={headers.length}>Nenhum dado encontrado</td></tr>
