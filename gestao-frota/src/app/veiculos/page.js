@@ -1,9 +1,10 @@
-
+"use client"
 import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import Table from "@/components/created/Table";
 import Footer from "@/components/created/Footer";
+import { useState } from "react";
 
 export default function Veiculos() {
     const [pesquisa, setPesquisa] = useState('');

@@ -8,7 +8,7 @@ export default function Table({ headers, columns, data }) {
     const pathName = usePathname();
 
     const handleEdit = (id) => {
-        router.push(`${pathName}/${id}`)
+        router.push(`${pathName}/${id}`);
     }
 
     const handleDelete = (id) => {
