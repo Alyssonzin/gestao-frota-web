@@ -4,19 +4,26 @@ import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import Table from "@/components/created/Table";
 import Footer from "@/components/created/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Motoristas() {
+    const URL = 'https://api-gestao-frota.onrender.com/driver';
     const [pesquisa, setPesquisa] = useState('');
-    const motoristas = [
-        { id: 1, nome: 'João Paulo Formentin Elias Pavannati', cpf: '123.456.789-00' },
-        { id: 2, nome: 'Maria', cpf: '987.654.321-00' },
-        { id: 3, nome: 'José', cpf: '456.789.123-00' },
-        { id: 4, nome: 'Ana', cpf: '654.321.987-00' },
-        { id: 5, nome: 'Pedro', cpf: '789.123.456-00' },
-    ];
-    const colunas = ['id', 'nome', 'cpf'];
-    const headers = ['#', 'Nome', 'CPF'];
+    const [motoristas, setMotoristas] = useState([]);
+    const colunas = ['id', 'nome', 'cnh'];
+    const headers = ['#', 'Nome', 'CNH'];
+
+    useEffect(() => {
+        const getMotoristas = async () => {
+            axios.get(URL).then((res) => {
+                setMotoristas(res.data);
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+        getMotoristas();
+    }, []);
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -26,7 +33,7 @@ export default function Motoristas() {
     //Busca ao pressionar ENTER
     const handleSearch = (event) => {
         const { key } = event;
-        if (key === 'Enter'){
+        if (key === 'Enter') {
             console.log(pesquisa);
         }
     }
