@@ -2,32 +2,34 @@
 
 import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
-import { useState } from "react";
 import Footer from "@/components/created/Footer";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
-export default function CadastrarMotorista() {
-    const [motorista, setMotorista] = useState({
-        cpf: '',
-        nome: '',
-        telefone: '',
-        logradouro: '',
-        bairro: '',
-        cidade: ''
+export default function CadastrarVeiculo() {
+    const [veiculo, setVeiculo] = useState({
+        modelo: '',
+        placa: '',
+        renavam: '',
+        cor: ''
     });
+
+    const router = useRouter();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setMotorista({
-            ...motorista,
+        setVeiculo({
+            ...veiculo,
             [name]: value
         })
     }
 
-    const handleCreateMotorista = async () => {
-        axios.post('http://localhost:3000/driver', motorista).then((res) => {
+    const handleCreateVeiculo = async () => {
+        axios.post('http://localhost:3000/vehicle', veiculo).then((res) => {
             console.log(res.data);
+            router.push('/vehicle');
         }).catch((err) => {
             console.log(err);
         });
@@ -37,86 +39,62 @@ export default function CadastrarMotorista() {
         <>
             <main className="flex h-screen bg-gray-200">
                 <NavAdmin />
-
                 <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
-
-                    <h1 className="text-3xl font-bold text-center">Cadastro de motoristas</h1>
-
+                    <h1 className="text-3xl font-bold text-center">Cadastro de veículos</h1>
                     <form className="flex flex-col space-y-4 justify-center items-center w-1/2">
                         <div className="w-1/2">
-                            <span>CPF:</span>
+                            <span>Modelo:</span>
                             <Input
                                 type="text"
-                                name="cpf"
-                                id="cpf"
                                 onChange={handleChange}
+                                name="modelo"
+                                id="modelo"
                                 autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
-                            <span>Nome:</span>
+                            <span>Ano:</span>
                             <Input
                                 type="text"
-                                name="nome"
-                                id="nome"
                                 onChange={handleChange}
+                                name="ano"
+                                id="ano"
                                 autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
-                            <span>CNH:</span>
+                            <span>Placa:</span>
                             <Input
                                 type="text"
-                                name="cnh"
-                                id="cnh"
                                 onChange={handleChange}
+                                name="placa"
+                                id="placa"
                                 autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
-                            <span>Telefone:</span>
+                            <span>Renavam:</span>
                             <Input
                                 type="text"
-                                name="telefone"
-                                id="telefone"
                                 onChange={handleChange}
+                                name="renavam"
+                                id="renavam"
                                 autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
-                            <span>Logradouro:</span>
+                            <span>Cor:</span>
                             <Input
                                 type="text"
-                                name="logradouro"
-                                id="logradouro"
                                 onChange={handleChange}
+                                name="cor"
+                                id="cor"
                                 autocomplete="off"
                             />
                         </div>
-                        <div className="w-1/2">
-                            <span>Bairro:</span>
-                            <Input
-                                type="text"
-                                name="bairro"
-                                id="bairro"
-                                onChange={handleChange}
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div className="w-1/2">
-                            <span>Cidade:</span>
-                            <Input
-                                type="text"
-                                name="cidade"
-                                id="cidade"
-                                onChange={handleChange}
-                                autocomplete="off"
-                            />
-                        </div>
-
                         <button
                             type="button"
-                            onClick={handleCreateMotorista}
+                            onClick={handleCreateVeiculo}
                             className="bg-green-500 hover:bg-green-700 transition duration-200 font-bold text-center shadow-md text-white py-2 px-4 rounded w-1/2">
                             Salvar
                         </button>

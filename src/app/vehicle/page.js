@@ -56,7 +56,7 @@ export default function Veiculos() {
                                 autocomplete="off"
                             />
                         </div>
-                        <Link href="/veiculos/novo" className="bg-green-500 hover:bg-green-600 transition duration-200 shadow-md rounded-md select-none text-white p-2">Novo +</Link>
+                        <Link href="/vehicle/novo" className="bg-green-500 hover:bg-green-600 transition duration-200 shadow-md rounded-md select-none text-white p-2">Novo +</Link>
                     </div>
 
                     <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">

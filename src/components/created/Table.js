@@ -2,8 +2,10 @@
 import { useRouter, usePathname } from "next/navigation";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import axios from "axios";
 
 export default function Table({ headers, columns, data }) {
+    const URL = 'http://localhost:3000/';
     const router = useRouter();
     const pathName = usePathname();
 
@@ -12,7 +14,11 @@ export default function Table({ headers, columns, data }) {
     }
 
     const handleDelete = (id) => {
-        console.log(`Deletando ${id}`);
+        axios.delete(`http://localhost:3000${pathName}/${id}`).then(() => {
+            window.location.reload();
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
     return (
