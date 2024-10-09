@@ -4,44 +4,34 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
 import { useState } from "react";
 import Footer from "@/components/created/Footer";
+import axios from "axios";
 
 export default function CadastrarMotorista() {
     const [motorista, setMotorista] = useState({
         cpf: '',
         nome: '',
         telefone: '',
-        endereco: {
-            logradouro: '',
-            bairro: ''
-        }
+        logradouro: '',
+        bairro: '',
+        cidade: ''
     });
 
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        if (name.includes('.')) {
-            const [key, subkey] = name.split('.');
-
-            setMotorista({
-                ...motorista,
-                [key]: {
-                    ...motorista[key],
-                    [subkey]: value
-                }
-            })
-            
-        } else {
-            setMotorista({
-                ...motorista,
-                [name]: value
-            })
-        }
+        setMotorista({
+            ...motorista,
+            [name]: value
+        })
     }
 
     const handleCreateMotorista = async () => {
-        console.log(motorista);
+        axios.post('http://localhost:3000/driver', motorista).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
     }
-
 
     return (
         <>
@@ -54,48 +44,73 @@ export default function CadastrarMotorista() {
 
                     <form className="flex flex-col space-y-4 justify-center items-center w-1/2">
                         <div className="w-1/2">
+                            <span>CPF:</span>
                             <Input
                                 type="text"
                                 name="cpf"
                                 id="cpf"
-                                placeholder="CPF"
                                 onChange={handleChange}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Nome:</span>
                             <Input
                                 type="text"
                                 name="nome"
                                 id="nome"
-                                placeholder="Nome"
                                 onChange={handleChange}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>CNH:</span>
+                            <Input
+                                type="text"
+                                name="cnh"
+                                id="cnh"
+                                onChange={handleChange}
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div className="w-1/2">
+                            <span>Telefone:</span>
                             <Input
                                 type="text"
                                 name="telefone"
                                 id="telefone"
-                                placeholder="Telefone"
                                 onChange={handleChange}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Logradouro:</span>
                             <Input
                                 type="text"
-                                name="endereco.logradouro"
+                                name="logradouro"
                                 id="logradouro"
-                                placeholder="Rua"
                                 onChange={handleChange}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Bairro:</span>
                             <Input
                                 type="text"
-                                name="endereco.bairro"
+                                name="bairro"
                                 id="bairro"
-                                placeholder="Bairro"
                                 onChange={handleChange}
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div className="w-1/2">
+                            <span>Cidade:</span>
+                            <Input
+                                type="text"
+                                name="cidade"
+                                id="cidade"
+                                onChange={handleChange}
+                                autocomplete="off"
                             />
                         </div>
 

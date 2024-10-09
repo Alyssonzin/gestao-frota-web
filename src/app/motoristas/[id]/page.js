@@ -26,29 +26,19 @@ export default function AtualizarMotorista({ params }) {
     //Atualiza o estado do motorista conforme o usuário digita
     const handleChange = (event) => {
         const { name, value } = event.target;
-
-        if (name.includes('.')) {
-            const [key, subkey] = name.split('.');
-
-            setMotorista({
-                ...motorista,
-                [key]: {
-                    ...motorista[key],
-                    [subkey]: value
-                }
-            });
-
-        } else {
-            setMotorista({
-                ...motorista,
-                [name]: value
-            });
-        }
+        setMotorista({
+            ...motorista,
+            [name]: value
+        });
     }
 
     //Envia o motorista para o backend
     const handleEditaMotorista = async () => {
-        console.log(motorista);
+        axios.put(URL + id, motorista).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
     return (
@@ -69,6 +59,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="nome"
                                 onChange={handleChange}
                                 value={motorista.nome || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -79,6 +70,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="cpf"
                                 onChange={handleChange}
                                 value={motorista.cpf || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -89,6 +81,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="cnh"
                                 onChange={handleChange}
                                 value={motorista.cnh || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -99,6 +92,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="telefone"
                                 onChange={handleChange}
                                 value={motorista.telefone || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -109,6 +103,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="logradouro"
                                 onChange={handleChange}
                                 value={motorista.logradouro || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -119,6 +114,7 @@ export default function AtualizarMotorista({ params }) {
                                 id="bairro"
                                 onChange={handleChange}
                                 value={motorista.bairro || ''}
+                                autocomplete="off"
                             />
                         </div>
 
