@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Motoristas() {
-    const URL = 'https://api-gestao-frota.onrender.com/driver';
+    const URL = 'http://localhost:3000/driver';
     const [pesquisa, setPesquisa] = useState('');
     const [motoristas, setMotoristas] = useState([]);
     const colunas = ['id', 'nome', 'cnh'];

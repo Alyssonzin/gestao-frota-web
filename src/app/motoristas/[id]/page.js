@@ -4,27 +4,22 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import Footer from "@/components/created/Footer";
+import axios from "axios";
 
 export default function AtualizarMotorista({ params }) {
+    const URL = 'http://localhost:3000/driver/';
     const { id } = params;
 
-    const [motorista, setMotorista] = useState({
-        cpf: '154848',
-        nome: 'João',
-        telefone: '9999999',
-        endereco: {
-            logradouro: 'Rua das Flores',
-            bairro: 'Bairro das Flores'
-        }
-    });
+    const [motorista, setMotorista] = useState({});
 
     useEffect(() => {
         const getMotorista = async () => {
-            console.log('buscando motorista pelo id...');
-
-
+            axios.get(URL + id).then((res) => {
+                setMotorista(res.data);
+            }).catch((err) => {
+                console.log(err);
+            });
         }
-
         getMotorista();
     }, [id]);
 
@@ -67,53 +62,63 @@ export default function AtualizarMotorista({ params }) {
 
                     <form className="flex flex-col space-y-4 justify-center items-center w-1/2">
                         <div className="w-1/2">
+                            <span>Nome:</span>
                             <Input
                                 type="text"
                                 name="nome"
                                 id="nome"
-                                placeholder="Nome"
                                 onChange={handleChange}
                                 value={motorista.nome || ''}
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>CPF:</span>
                             <Input
                                 type="text"
                                 name="cpf"
                                 id="cpf"
-                                placeholder="CPF"
                                 onChange={handleChange}
                                 value={motorista.cpf || ''}
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Número da CNH:</span>
+                            <Input
+                                type="text"
+                                name="cnh"
+                                id="cnh"
+                                onChange={handleChange}
+                                value={motorista.cnh || ''}
+                            />
+                        </div>
+                        <div className="w-1/2">
+                            <span>Telefone:</span>
                             <Input
                                 type="text"
                                 name="telefone"
                                 id="telefone"
-                                placeholder="Telefone"
                                 onChange={handleChange}
                                 value={motorista.telefone || ''}
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Logradouro:</span>
                             <Input
                                 type="text"
-                                name="endereco.logradouro"
+                                name="logradouro"
                                 id="logradouro"
-                                placeholder="Rua"
                                 onChange={handleChange}
-                                value={motorista.endereco.logradouro || ''}
+                                value={motorista.logradouro || ''}
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Bairro:</span>
                             <Input
                                 type="text"
-                                name="endereco.bairro"
+                                name="bairro"
                                 id="bairro"
-                                placeholder="Bairro"
                                 onChange={handleChange}
-                                value={motorista.endereco.bairro || ''}
+                                value={motorista.bairro || ''}
                             />
                         </div>
 
