@@ -34,7 +34,11 @@ export default function AtualizarVeiculo({ params }) {
 
     //Envia o veiculo para o backend
     const handleEditVeiculo = async () => {
-        console.log(veiculo);
+        axios.put(URL + id, veiculo).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
 
@@ -53,6 +57,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="modelo"
                                 id="modelo"
                                 value={veiculo.modelo}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -63,6 +68,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="placa"
                                 id="placa"
                                 value={veiculo.placa || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -73,6 +79,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="renavam"
                                 id="renavam"
                                 value={veiculo.renavam || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -83,6 +90,7 @@ export default function AtualizarVeiculo({ params }) {
                                 name="cor"
                                 id="cor"
                                 value={veiculo.cor || ''}
+                                autocomplete="off"
                             />
                         </div>
                         <button

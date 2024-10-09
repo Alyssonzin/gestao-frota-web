@@ -4,6 +4,7 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
 import Footer from "@/components/created/Footer";
 import { useState } from "react";
+import axios from "axios";
 
 export default function CadastrarVeiculo() {
     const [veiculo, setVeiculo] = useState({
@@ -23,7 +24,11 @@ export default function CadastrarVeiculo() {
     }
 
     const handleCreateVeiculo = async () => {
-        console.log(veiculo);
+        axios.post('http://localhost:3000/vehicle', veiculo).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
     return (
@@ -40,6 +45,7 @@ export default function CadastrarVeiculo() {
                                 onChange={handleChange}
                                 name="modelo"
                                 id="modelo"
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -49,6 +55,7 @@ export default function CadastrarVeiculo() {
                                 onChange={handleChange}
                                 name="ano"
                                 id="ano"
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -58,6 +65,7 @@ export default function CadastrarVeiculo() {
                                 onChange={handleChange}
                                 name="placa"
                                 id="placa"
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -67,6 +75,7 @@ export default function CadastrarVeiculo() {
                                 onChange={handleChange}
                                 name="renavam"
                                 id="renavam"
+                                autocomplete="off"
                             />
                         </div>
                         <div className="w-1/2">
@@ -76,6 +85,7 @@ export default function CadastrarVeiculo() {
                                 onChange={handleChange}
                                 name="cor"
                                 id="cor"
+                                autocomplete="off"
                             />
                         </div>
                         <button
