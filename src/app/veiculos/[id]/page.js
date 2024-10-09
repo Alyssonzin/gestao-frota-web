@@ -4,23 +4,21 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import Footer from "@/components/created/Footer";
+import axios from "axios";
 
 export default function AtualizarVeiculo({ params }) {
+    const URL = 'http://localhost:3000/vehicle/';
     const { id } = params;
-
-    const [veiculo, setVeiculo] = useState({
-        modelo: 'Fusca',
-        placa: 'miau123',
-        renavam: '111111',
-        cor: 'branco'
-    });
+    const [veiculo, setVeiculo] = useState({});
 
     useEffect(() => {
         const getVeiculo = async () => {
-            console.log('buscando veiculo pelo id...');
-
+            axios.get(URL + id).then((res) => {
+                setVeiculo(res.data);
+            }).catch((err) => {
+                console.log(err);
+            });
         }
-
         getVeiculo();
     }, [id]);
 
@@ -48,42 +46,42 @@ export default function AtualizarVeiculo({ params }) {
                     <h1 className="text-3xl font-bold text-center">Editar veículo</h1>
                     <form className="flex flex-col space-y-4 justify-center items-center w-1/2">
                         <div className="w-1/2">
+                            <span>Modelo:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="modelo"
                                 id="modelo"
-                                placeholder="Modelo"
                                 value={veiculo.modelo}
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Ano:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="placa"
                                 id="placa"
-                                placeholder="Placa"
                                 value={veiculo.placa || ''}
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Renavam:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="renavam"
                                 id="renavam"
-                                placeholder="renavam"
                                 value={veiculo.renavam || ''}
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Cor:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="cor"
                                 id="cor"
-                                placeholder="Cor"
                                 value={veiculo.cor || ''}
                             />
                         </div>

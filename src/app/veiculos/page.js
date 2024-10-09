@@ -4,34 +4,27 @@ import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import Table from "@/components/created/Table";
 import Footer from "@/components/created/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Veiculos() {
+    const URL = 'http://localhost:3000/vehicle';
     const [pesquisa, setPesquisa] = useState('');
-    const carros = [
-        { id: 1, modelo: 'Gol', placa: 'ABC-1234' },
-        { id: 2, modelo: 'Uno', placa: 'DEF-5678' },
-        { id: 3, modelo: 'Celta', placa: 'GHI-9012' },
-        { id: 4, modelo: 'Civic', placa: 'JKL-3456' },
-        { id: 5, modelo: 'Corolla', placa: 'MNO-7890' },
-        { id: 6, modelo: 'Gol', placa: 'ABC-1234' },
-        { id: 7, modelo: 'Uno', placa: 'DEF-5678' },
-        { id: 8, modelo: 'Celta', placa: 'GHI-9012' },
-        { id: 1, modelo: 'Gol', placa: 'ABC-1234' },
-        { id: 2, modelo: 'Uno', placa: 'DEF-5678' },
-        { id: 3, modelo: 'Celta', placa: 'GHI-9012' },
-        { id: 4, modelo: 'Civic', placa: 'JKL-3456' },
-        { id: 5, modelo: 'Corolla', placa: 'MNO-7890' },
-        { id: 6, modelo: 'Gol', placa: 'ABC-1234' },
-        { id: 7, modelo: 'Uno', placa: 'DEF-5678' },
-        { id: 8, modelo: 'Celta', placa: 'GHI-9012' },
-        { id: 1, modelo: 'Gol', placa: 'ABC-1234' },
-        { id: 2, modelo: 'Uno', placa: 'DEF-5678' },
-        { id: 3, modelo: 'Celta', placa: 'GHI-9012' },
-        { id: 4, modelo: 'Civic', placa: 'JKL-3456' }
-    ];
+    const [veiculos, setVeiculos] = useState([]);
+
     const colunas = ['id', 'modelo', 'placa'];
     const headers = ['#', 'Modelo', 'Placa'];
+
+    useEffect(() => {
+        const getVeiculos = () => {
+            axios.get(URL).then((res) => {
+                setVeiculos(res.data);
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+        getVeiculos();
+    }, []);
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -67,7 +60,7 @@ export default function Veiculos() {
                     </div>
 
                     <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                        <Table headers={headers} data={carros} columns={colunas} />
+                        <Table headers={headers} data={veiculos} columns={colunas} />
                     </div>
                 </section>
             </main>

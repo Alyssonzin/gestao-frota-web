@@ -34,39 +34,48 @@ export default function CadastrarVeiculo() {
                     <h1 className="text-3xl font-bold text-center">Cadastro de veículos</h1>
                     <form className="flex flex-col space-y-4 justify-center items-center w-1/2">
                         <div className="w-1/2">
+                            <span>Modelo:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="modelo"
                                 id="modelo"
-                                placeholder="Modelo"
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Ano:</span>
+                            <Input
+                                type="text"
+                                onChange={handleChange}
+                                name="ano"
+                                id="ano"
+                            />
+                        </div>
+                        <div className="w-1/2">
+                            <span>Placa:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="placa"
                                 id="placa"
-                                placeholder="Placa"
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Renavam:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="renavam"
                                 id="renavam"
-                                placeholder="renavam"
                             />
                         </div>
                         <div className="w-1/2">
+                            <span>Cor:</span>
                             <Input
                                 type="text"
                                 onChange={handleChange}
                                 name="cor"
                                 id="cor"
-                                placeholder="Cor"
                             />
                         </div>
                         <button
