@@ -5,22 +5,18 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Table from "@/components/created/Table";
 import Footer from "@/components/created/Footer";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getDrivers } from "@/api/routes";
 
 export default function Motoristas() {
-    const URL = 'http://localhost:3000/driver';
     const [pesquisa, setPesquisa] = useState('');
-    const [motoristas, setMotoristas] = useState([]);
+    const [motoristas, setMotoristas] = useState();
     const colunas = ['id', 'nome', 'cnh'];
     const headers = ['#', 'Nome', 'CNH'];
 
     useEffect(() => {
         const getMotoristas = async () => {
-            axios.get(URL).then((res) => {
-                setMotoristas(res.data);
-            }).catch((err) => {
-                console.log(err);
-            });
+            const data = await getDrivers();
+            setMotoristas(data);
         }
         getMotoristas();
     }, []);
