@@ -5,17 +5,10 @@ import Input from "@/components/created/Input";
 import { useState } from "react";
 import Footer from "@/components/created/Footer";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { createDriver } from "@/api/routes";
 
 export default function CadastrarMotorista() {
-    const [motorista, setMotorista] = useState({
-        cpf: '',
-        nome: '',
-        telefone: '',
-        logradouro: '',
-        bairro: '',
-        cidade: ''
-    });
+    const [motorista, setMotorista] = useState({});
 
     const router = useRouter();
 
@@ -29,12 +22,8 @@ export default function CadastrarMotorista() {
     }
 
     const handleCreateMotorista = async () => {
-        axios.post('http://localhost:3000/driver', motorista).then((res) => {
-            console.log(res.data);
-            router.push('/driver');
-        }).catch((err) => {
-            console.log(err);
-        });
+        createDriver(motorista);
+        router.push('/driver');
     }
 
     return (
@@ -73,6 +62,16 @@ export default function CadastrarMotorista() {
                                 type="text"
                                 name="cnh"
                                 id="cnh"
+                                onChange={handleChange}
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div className="w-1/2">
+                            <span>Data de nascimento:</span>
+                            <Input
+                                type="text"
+                                name="data_nasc"
+                                id="data_nasc"
                                 onChange={handleChange}
                                 autocomplete="off"
                             />

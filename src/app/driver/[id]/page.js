@@ -4,21 +4,16 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import Footer from "@/components/created/Footer";
-import axios from "axios";
+import { getDriverById, updateDriver } from "@/api/routes";
 
 export default function AtualizarMotorista({ params }) {
-    const URL = 'http://localhost:3000/driver/';
     const { id } = params;
-
     const [motorista, setMotorista] = useState({});
 
     useEffect(() => {
         const getMotorista = async () => {
-            axios.get(URL + id).then((res) => {
-                setMotorista(res.data);
-            }).catch((err) => {
-                console.log(err);
-            });
+            const driver = await getDriverById(id);
+            setMotorista(driver)
         }
         getMotorista();
     }, [id]);
@@ -34,11 +29,7 @@ export default function AtualizarMotorista({ params }) {
 
     //Envia o motorista para o backend
     const handleEditaMotorista = async () => {
-        axios.put(URL + id, motorista).then((res) => {
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err);
-        });
+        updateDriver(id, motorista);
     }
 
     return (
@@ -81,6 +72,17 @@ export default function AtualizarMotorista({ params }) {
                                 id="cnh"
                                 onChange={handleChange}
                                 value={motorista.cnh || ''}
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div className="w-1/2">
+                            <span>Data de nascimento:</span>
+                            <Input
+                                type="text"
+                                name="data_nasc"
+                                id="data_nasc"
+                                onChange={handleChange}
+                                value={motorista.data_nasc || ''}
                                 autocomplete="off"
                             />
                         </div>
