@@ -5,21 +5,17 @@ import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/created/Footer";
-import axios from "axios";
+import { getVehicleById, updateVehicle } from "@/api/routes";
 
 export default function AtualizarVeiculo({ params }) {
-    const URL = 'http://localhost:3000/vehicle/';
     const { id } = params;
     const [veiculo, setVeiculo] = useState({});
     const router = useRouter();
 
     useEffect(() => {
         const getVeiculo = async () => {
-            axios.get(URL + id).then((res) => {
-                setVeiculo(res.data);
-            }).catch((err) => {
-                console.log(err);
-            });
+            const vehicle = await getVehicleById(id);
+            setVeiculo(vehicle);
         }
         getVeiculo();
     }, [id]);
@@ -36,11 +32,8 @@ export default function AtualizarVeiculo({ params }) {
 
     //Envia o veiculo para o backend
     const handleEditVeiculo = async () => {
-        axios.put(URL + id, veiculo).then((res) => {
-            router.push('/vehicle');
-        }).catch((err) => {
-            console.log(err);
-        });
+        updateVehicle(id, veiculo);
+        router.push('/vehicle');
     }
 
 

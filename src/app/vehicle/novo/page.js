@@ -5,15 +5,10 @@ import Input from "@/components/created/Input";
 import Footer from "@/components/created/Footer";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { createVehicle } from "@/api/routes";
 
 export default function CadastrarVeiculo() {
-    const [veiculo, setVeiculo] = useState({
-        modelo: '',
-        placa: '',
-        renavam: '',
-        cor: ''
-    });
+    const [veiculo, setVeiculo] = useState({});
 
     const router = useRouter();
 
@@ -27,12 +22,8 @@ export default function CadastrarVeiculo() {
     }
 
     const handleCreateVeiculo = async () => {
-        axios.post('http://localhost:3000/vehicle', veiculo).then((res) => {
-            console.log(res.data);
-            router.push('/vehicle');
-        }).catch((err) => {
-            console.log(err);
-        });
+        createVehicle(veiculo);
+        router.push('/vehicle');
     }
 
     return (

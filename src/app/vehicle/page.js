@@ -5,10 +5,9 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Table from "@/components/created/Table";
 import Footer from "@/components/created/Footer";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getVehicles } from "@/api/routes";
 
 export default function Veiculos() {
-    const URL = 'http://localhost:3000/vehicle';
     const [pesquisa, setPesquisa] = useState('');
     const [veiculos, setVeiculos] = useState([]);
 
@@ -16,12 +15,9 @@ export default function Veiculos() {
     const headers = ['#', 'Modelo', 'Placa'];
 
     useEffect(() => {
-        const getVeiculos = () => {
-            axios.get(URL).then((res) => {
-                setVeiculos(res.data);
-            }).catch((err) => {
-                console.log(err);
-            });
+        const getVeiculos = async () => {
+            const data = await getVehicles();
+            setVeiculos(data);
         }
         getVeiculos();
     }, []);
