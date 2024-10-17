@@ -10,8 +10,8 @@ import { getDrivers } from "@/api/routes";
 export default function Motoristas() {
     const [pesquisa, setPesquisa] = useState('');
     const [motoristas, setMotoristas] = useState();
-    const colunas = ['id', 'nome', 'cnh'];
-    const headers = ['#', 'Nome', 'CNH'];
+    const colunas = ['id', 'nome', 'cpf'];
+    const headers = ['#', 'Nome', 'CPF'];
 
     useEffect(() => {
         const getMotoristas = async () => {
