@@ -1,4 +1,6 @@
 import axios from "axios";
+import dayjs from "dayjs";
+
 const API_URL = "https://api-gestao-frota.onrender.com"
 const API_URL_LOCAL = "http://localhost:8080"
 
@@ -17,6 +19,8 @@ export const getDrivers = async () => {
 
 export const getDriverById = async (id) => {
     return api.get(`/driver/${id}`).then(res => {
+        const { data_nasc } = res.data;
+        res.data.data_nasc = dayjs(data_nasc).format('DD/MM/YYYY'); // Formata a data de nascimento
         return res.data;
     }).catch(error => {
         throw error;
