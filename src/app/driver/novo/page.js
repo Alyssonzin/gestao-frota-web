@@ -6,6 +6,7 @@ import { useState } from "react";
 import Footer from "@/components/created/Footer";
 import { useRouter } from "next/navigation";
 import { createDriver } from "@/api/routes";
+import { cpfMask } from "../../../utils/cpfMask";
 
 export default function CadastrarMotorista() {
     const [motorista, setMotorista] = useState({});
@@ -13,12 +14,18 @@ export default function CadastrarMotorista() {
     const router = useRouter();
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        let { name, value } = event.target;
+
+        if (name === 'cpf') {
+            value = cpfMask(value);
+        }
 
         setMotorista({
             ...motorista,
             [name]: value
-        })
+        });
+
+        event.target.value = value;
     }
 
     const handleCreateMotorista = async () => {
