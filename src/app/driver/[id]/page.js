@@ -5,7 +5,7 @@ import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import Footer from "@/components/created/Footer";
 import { getDriverById, updateDriver } from "@/api/routes";
-import { dateMask, cpfMask, maxLengthNumbers } from "@/utils/Masks";
+import { dateMask, cpfMask, maxLengthNumbers, phoneMask } from "@/utils/Masks";
 import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
 
@@ -32,6 +32,7 @@ export default function AtualizarMotorista({ params }) {
             cpf: name === 'cpf' ? value = cpfMask(value) : motorista.cpf,
             data_nasc: name === 'data_nasc' ? value = dateMask(value) : motorista.data_nasc,
             cnh: name === 'cnh' ? value = maxLengthNumbers(value, 11) : motorista.cnh,
+            telefone: name === 'telefone' ? value = phoneMask(value) : motorista.telefone,
             [name]: value
         });
 

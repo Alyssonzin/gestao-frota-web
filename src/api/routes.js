@@ -1,5 +1,5 @@
 import axios from "axios";
-import { cpfMask } from "@/utils/Masks";
+import { cpfMask, phoneMask } from "@/utils/Masks";
 import { dateFormat } from "@/utils/dateFormat";
 
 const API_URL = "https://api-gestao-frota.onrender.com";
@@ -27,6 +27,7 @@ export const getDriverById = async (id) => {
         const driver = res.data;
         driver.data_nasc = dateFormat(driver.data_nasc); //Formata a data de nascimento
         driver.cpf = cpfMask(driver.cpf); //Formata o CPF
+        driver.telefone = phoneMask(driver.telefone); //Formata o telefone
         return driver;
     }).catch(error => {
         throw error;

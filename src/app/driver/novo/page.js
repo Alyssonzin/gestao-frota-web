@@ -6,7 +6,7 @@ import { useState } from "react";
 import Footer from "@/components/created/Footer";
 import { useRouter } from "next/navigation";
 import { createDriver } from "@/api/routes";
-import { cpfMask, maxLengthNumbers, dateMask } from "@/utils/Masks";
+import { cpfMask, maxLengthNumbers, dateMask, phoneMask } from "@/utils/Masks";
 import Motorista from "@/utils/objects/Motorista";
 
 export default function CadastrarMotorista() {
@@ -22,6 +22,7 @@ export default function CadastrarMotorista() {
             cpf: name === 'cpf' ? value = cpfMask(value) : motorista.cpf,
             data_nasc: name === 'data_nasc' ? value = dateMask(value) : motorista.data_nasc,
             cnh: name === 'cnh' ? value = maxLengthNumbers(value, 11) : motorista.cnh,
+            telefone: name === 'telefone' ? value = phoneMask(value) : motorista.telefone,
             [name]: value
         });
 
