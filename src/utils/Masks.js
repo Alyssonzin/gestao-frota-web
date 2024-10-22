@@ -19,4 +19,7 @@ export const dateMask = (dateString) => {
         .replace(/(\d{4})\d+?$/, '$1'); // Remove o que excede 10 caracteres
 }
 
-
+export const maxLengthNumbers = (value, maxLength) => {
+    // Remove tudo que não for número e limita o tamanho da string para maxLength
+    return value.replace(/\D/g, '').slice(0, maxLength);
+}

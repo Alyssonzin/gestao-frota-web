@@ -5,10 +5,9 @@ import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import Footer from "@/components/created/Footer";
 import { getDriverById, updateDriver } from "@/api/routes";
-import { dateMask, cpfMask } from "@/utils/Masks";
+import { dateMask, cpfMask, maxLengthNumbers } from "@/utils/Masks";
 import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
-import { maxLengthNumbers } from "@/utils/maxLengthNumbers";
 
 export default function AtualizarMotorista({ params }) {
     const { id } = params;
