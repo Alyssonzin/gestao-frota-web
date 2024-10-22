@@ -7,6 +7,7 @@ import Footer from "@/components/created/Footer";
 import { useRouter } from "next/navigation";
 import { createDriver } from "@/api/routes";
 import { cpfMask } from "../../../utils/cpfMask";
+import { dateMask } from "@/utils/dateMask";
 
 export default function CadastrarMotorista() {
     const [motorista, setMotorista] = useState({});
@@ -22,6 +23,8 @@ export default function CadastrarMotorista() {
 
         setMotorista({
             ...motorista,
+            cpf: name === 'cpf' ? value = cpfMask(value) : motorista.cpf,
+            data_nasc: name === 'data_nasc' ? value = dateMask(value) : motorista.data_nasc,
             [name]: value
         });
 

@@ -5,6 +5,8 @@ import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import Footer from "@/components/created/Footer";
 import { getDriverById, updateDriver } from "@/api/routes";
+import { cpfMask } from "@/utils/cpfMask";
+import { dateMask } from "@/utils/dateMask";
 
 export default function AtualizarMotorista({ params }) {
     const { id } = params;
@@ -20,16 +22,25 @@ export default function AtualizarMotorista({ params }) {
 
     //Atualiza o estado do motorista conforme o usuário digita
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        let { name, value } = event.target;
         setMotorista({
             ...motorista,
+            cpf: name === 'cpf' ? value = cpfMask(value) : motorista.cpf,
+            data_nasc: name === 'data_nasc' ? value = dateMask(value) : motorista.data_nasc,
             [name]: value
         });
+
+        event.target.value = value;
     }
 
     //Envia o motorista para o backend
     const handleEditaMotorista = async () => {
-        updateDriver(id, motorista);
+        try {
+            await updateDriver(id, motorista);
+            alert('Motorista atualizado com sucesso!');
+        } catch (error) {
+            alert('Erro ao atualizar motorista!');
+        }
     }
 
     return (
