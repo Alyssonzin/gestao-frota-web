@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/created/Footer";
 import { getVehicleById, updateVehicle } from "@/api/routes";
+import Veiculo from "@/utils/objects/Veiculo";
 
 export default function AtualizarVeiculo({ params }) {
     const { id } = params;
-    const [veiculo, setVeiculo] = useState({});
+    const [veiculo, setVeiculo] = useState(Veiculo);
     const router = useRouter();
 
     useEffect(() => {
@@ -32,8 +33,12 @@ export default function AtualizarVeiculo({ params }) {
 
     //Envia o veiculo para o backend
     const handleEditVeiculo = async () => {
-        updateVehicle(id, veiculo);
-        router.push('/vehicle');
+        try {
+            await updateVehicle(id, veiculo);
+            router.push('/vehicle');
+        } catch (error) {
+            alert('Erro ao atualizar veículo!');
+        }
     }
 
 

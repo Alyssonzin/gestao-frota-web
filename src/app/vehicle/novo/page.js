@@ -6,9 +6,10 @@ import Footer from "@/components/created/Footer";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createVehicle } from "@/api/routes";
+import Veiculo from "@/utils/objects/Veiculo";
 
 export default function CadastrarVeiculo() {
-    const [veiculo, setVeiculo] = useState({});
+    const [veiculo, setVeiculo] = useState(Veiculo);
 
     const router = useRouter();
 
@@ -22,8 +23,12 @@ export default function CadastrarVeiculo() {
     }
 
     const handleCreateVeiculo = async () => {
-        createVehicle(veiculo);
-        router.push('/vehicle');
+        try {
+            await createVehicle(veiculo);
+            router.push('/vehicle');
+        } catch (error) {
+            alert('Erro ao cadastrar veículo');
+        }
     }
 
     return (

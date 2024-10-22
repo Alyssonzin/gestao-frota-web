@@ -6,20 +6,17 @@ import { useState } from "react";
 import Footer from "@/components/created/Footer";
 import { useRouter } from "next/navigation";
 import { createDriver } from "@/api/routes";
-import { cpfMask } from "../../../utils/cpfMask";
+import { cpfMask } from "@/utils/cpfMask";
 import { dateMask } from "@/utils/dateMask";
+import Motorista from "@/utils/objects/Motorista";
 
 export default function CadastrarMotorista() {
-    const [motorista, setMotorista] = useState({});
+    const [motorista, setMotorista] = useState(Motorista);
 
     const router = useRouter();
 
     const handleChange = (event) => {
         let { name, value } = event.target;
-
-        if (name === 'cpf') {
-            value = cpfMask(value);
-        }
 
         setMotorista({
             ...motorista,
@@ -32,8 +29,12 @@ export default function CadastrarMotorista() {
     }
 
     const handleCreateMotorista = async () => {
-        createDriver(motorista);
-        router.push('/driver');
+        try {
+            await createDriver(motorista);
+            router.push('/driver');
+        } catch (error) {
+            alert('Erro ao cadastrar motorista!');
+        }
     }
 
     return (

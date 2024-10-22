@@ -7,11 +7,14 @@ import Footer from "@/components/created/Footer";
 import { getDriverById, updateDriver } from "@/api/routes";
 import { cpfMask } from "@/utils/cpfMask";
 import { dateMask } from "@/utils/dateMask";
-import Motorista from "../../../utils/objects/Motorista";
+import { useRouter } from "next/navigation";
+import Motorista from "@/utils/objects/Motorista";
 
 export default function AtualizarMotorista({ params }) {
     const { id } = params;
     const [motorista, setMotorista] = useState(Motorista);
+
+    const router = useRouter();
 
     useEffect(() => {
         const getMotorista = async () => {
@@ -39,7 +42,7 @@ export default function AtualizarMotorista({ params }) {
     const handleEditaMotorista = async () => {
         try {
             await updateDriver(id, motorista);
-            alert('Motorista atualizado com sucesso!');
+            router.push('/driver');
         } catch (error) {
             alert('Erro ao atualizar motorista!');
         }
