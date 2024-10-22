@@ -15,8 +15,12 @@ export default function Motoristas() {
 
     useEffect(() => {
         const getMotoristas = async () => {
-            const data = await getDrivers();
-            setMotoristas(data);
+            try {
+                const data = await getDrivers();
+                setMotoristas(data);
+            } catch (error) {
+                setMotoristas();
+            }
         }
         getMotoristas();
     }, []);

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { dateFormat } from "../utils/dateFormat";
-import { cpfMask } from "@/utils/cpfMask";
+import { cpfMask } from "@/utils/Masks";
+import { dateFormat } from "@/utils/dateFormat";
 
 const API_URL = "https://api-gestao-frota.onrender.com";
 const API_URL_LOCAL = "http://localhost:8080";
