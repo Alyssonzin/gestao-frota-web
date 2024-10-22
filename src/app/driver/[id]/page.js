@@ -7,15 +7,16 @@ import Footer from "@/components/created/Footer";
 import { getDriverById, updateDriver } from "@/api/routes";
 import { cpfMask } from "@/utils/cpfMask";
 import { dateMask } from "@/utils/dateMask";
+import Motorista from "../../../utils/objects/Motorista";
 
 export default function AtualizarMotorista({ params }) {
     const { id } = params;
-    const [motorista, setMotorista] = useState({});
+    const [motorista, setMotorista] = useState(Motorista);
 
     useEffect(() => {
         const getMotorista = async () => {
             const driver = await getDriverById(id);
-            setMotorista(driver)
+            setMotorista(driver);
         }
         getMotorista();
     }, [id]);
@@ -23,6 +24,7 @@ export default function AtualizarMotorista({ params }) {
     //Atualiza o estado do motorista conforme o usuário digita
     const handleChange = (event) => {
         let { name, value } = event.target;
+        
         setMotorista({
             ...motorista,
             cpf: name === 'cpf' ? value = cpfMask(value) : motorista.cpf,
