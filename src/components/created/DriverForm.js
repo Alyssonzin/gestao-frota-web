@@ -1,11 +1,10 @@
 "use client"
-
 import Input from "./Input"
 import Motorista from "@/utils/objects/Motorista";
 import { cpfMask, dateMask, maxLengthNumbers, phoneMask } from "@/utils/Masks";
 import { useState } from "react";
 
-export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) {
+export default function DriverForm({ defaultValues = Motorista, onsubmit }) {
     const [motorista, setMotorista] = useState(defaultValues);
 
     const handleChange = (event) => {
@@ -34,7 +33,7 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="cpf"
                             id="cpf"
                             onChange={handleChange}
-                            value={motorista.cpf || ''}
+                            value={motorista.cpf}
                         />
                     </div>
                     <div className="w-full">
@@ -44,7 +43,7 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="nome"
                             id="nome"
                             onChange={handleChange}
-                            value={motorista.nome || ''}
+                            value={motorista.nome}
                         />
                     </div>
                     <div className="w-full">
@@ -54,7 +53,7 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="cnh"
                             id="cnh"
                             onChange={handleChange}
-                            value={motorista.cnh || ''}
+                            value={motorista.cnh}
                         />
                     </div>
                     <div className="w-full">
@@ -64,7 +63,7 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="data_nasc"
                             id="data_nasc"
                             onChange={handleChange}
-                            value={motorista.data_nasc || ''}
+                            value={motorista.data_nasc}
                         />
                     </div>
                 </div>
@@ -76,7 +75,7 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="telefone"
                             id="telefone"
                             onChange={handleChange}
-                            value={motorista.telefone || ''}
+                            value={motorista.telefone}
                         />
                     </div>
                     <div className="w-full">
@@ -86,7 +85,7 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="logradouro"
                             id="logradouro"
                             onChange={handleChange}
-                            value={motorista.logradouro || ''}
+                            value={motorista.logradouro}
                         />
                     </div>
                     <div className="w-full">
@@ -96,7 +95,7 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="bairro"
                             id="bairro"
                             onChange={handleChange}
-                            value={motorista.bairro || ''}
+                            value={motorista.bairro}
                         />
                     </div>
                     <div className="w-full">
@@ -106,14 +105,14 @@ export default function DriverForm({ defaultValues = { Motorista }, onsubmit }) 
                             name="cidade"
                             id="cidade"
                             onChange={handleChange}
-                            value={motorista.cidade || ''}
+                            value={motorista.cidade}
                         />
                     </div>
                 </div>
             </form>
             <button
                 type="button"
-                onClick={onsubmit(motorista)}
+                onClick={() => onsubmit(motorista)}
                 className="bg-green-500 hover:bg-green-700 transition duration-200 font-bold text-center shadow-md text-white py-2 px-4 rounded w-full">
                 Salvar
             </button>
