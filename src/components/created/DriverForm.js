@@ -1,11 +1,15 @@
 "use client"
 import Input from "./Input"
-import Motorista from "@/utils/objects/Motorista";
 import { cpfMask, dateMask, maxLengthNumbers, phoneMask } from "@/utils/Masks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Motorista from "@/utils/objects/Motorista";
 
-export default function DriverForm({ defaultValues = Motorista, onsubmit }) {
-    const [motorista, setMotorista] = useState(defaultValues);
+export default function DriverForm({ initialValues = Motorista, onsubmit }) {
+    const [motorista, setMotorista] = useState(initialValues);
+
+    useEffect(() => {
+        setMotorista(initialValues);
+    }, [initialValues]);
 
     const handleChange = (event) => {
         let { name, value } = event.target;
