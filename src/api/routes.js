@@ -77,6 +77,7 @@ export const getVehicleById = async (id) => {
 }
 
 export const createVehicle = async (data) => {
+    data.ano = parseInt(data.ano);
     return api.post('/vehicle', data).then(res => {
         return res.data;
     }).catch(error => {

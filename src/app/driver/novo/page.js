@@ -25,7 +25,7 @@ export default function CadastrarMotorista() {
                 <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
 
                     <h1 className="text-3xl font-bold text-center">Cadastro de motoristas</h1>
-                    <DriverForm onsubmit={handleCreateMotorista} />
+                    <DriverForm onSubmit={handleCreateMotorista} />
 
                 </section>
             </main>

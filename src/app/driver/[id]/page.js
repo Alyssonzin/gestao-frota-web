@@ -44,7 +44,7 @@ export default function AtualizarMotorista({ params }) {
 
                     <h1 className="text-3xl font-bold text-center">Editar motorista</h1>
 
-                    <DriverForm initialValues={motorista} onsubmit={handleEditaMotorista} />
+                    <DriverForm initialValues={motorista} onSubmit={handleEditaMotorista} />
                 </section>
             </main>
             <Footer />

@@ -4,7 +4,7 @@ import { cpfMask, dateMask, maxLengthNumbers, phoneMask } from "@/utils/Masks";
 import { useEffect, useState } from "react";
 import Motorista from "@/utils/objects/Motorista";
 
-export default function DriverForm({ initialValues = Motorista, onsubmit }) {
+export default function DriverForm({ initialValues = Motorista, onSubmit }) {
     const [motorista, setMotorista] = useState(initialValues);
 
     useEffect(() => {
@@ -116,7 +116,7 @@ export default function DriverForm({ initialValues = Motorista, onsubmit }) {
             </form>
             <button
                 type="button"
-                onClick={() => onsubmit(motorista)}
+                onClick={() => onSubmit(motorista)}
                 className="bg-green-500 hover:bg-green-700 transition duration-200 font-bold text-center shadow-md text-white py-2 px-4 rounded w-full">
                 Salvar
             </button>

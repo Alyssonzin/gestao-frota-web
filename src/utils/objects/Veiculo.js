@@ -1,6 +1,6 @@
 const Veiculo = {
     modelo: '',
-    ano: 0,
+    ano: '',
     cor: '',
     placa: '',
     renavam: '',
