@@ -1,12 +1,12 @@
 "use client"
 
 import NavAdmin from "@/components/created/NavAdmin";
-import Input from "@/components/created/Input";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/created/Footer";
 import { getVehicleById, updateVehicle } from "@/api/routes";
 import Veiculo from "@/utils/objects/Veiculo";
+import VehicleForm from "@/components/created/VehicleForm";
 
 export default function AtualizarVeiculo({ params }) {
     const { id } = params;
@@ -21,26 +21,15 @@ export default function AtualizarVeiculo({ params }) {
         getVeiculo();
     }, [id]);
 
-    //Atualiza o estado do veiculo conforme o usuário digita
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setVeiculo({
-            ...veiculo,
-            [name]: value
-        });
-    }
-
     //Envia o veiculo para o backend
-    const handleEditVeiculo = async () => {
+    const handleEditVeiculo = async (data) => {
         try {
-            await updateVehicle(id, veiculo);
+            await updateVehicle(id, data);
             router.push('/vehicle');
         } catch (error) {
             alert('Erro ao atualizar veículo!');
         }
     }
-
 
     return (
         <>
@@ -48,58 +37,7 @@ export default function AtualizarVeiculo({ params }) {
                 <NavAdmin />
                 <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
                     <h1 className="text-3xl font-bold text-center">Editar veículo</h1>
-                    <form className="flex flex-col space-y-4 justify-center items-center w-1/2">
-                        <div className="w-1/2">
-                            <span>Modelo:</span>
-                            <Input
-                                type="text"
-                                onChange={handleChange}
-                                name="modelo"
-                                id="modelo"
-                                value={veiculo.modelo}
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div className="w-1/2">
-                            <span>Ano:</span>
-                            <Input
-                                type="text"
-                                onChange={handleChange}
-                                name="placa"
-                                id="placa"
-                                value={veiculo.placa || ''}
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div className="w-1/2">
-                            <span>Renavam:</span>
-                            <Input
-                                type="text"
-                                onChange={handleChange}
-                                name="renavam"
-                                id="renavam"
-                                value={veiculo.renavam || ''}
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div className="w-1/2">
-                            <span>Cor:</span>
-                            <Input
-                                type="text"
-                                onChange={handleChange}
-                                name="cor"
-                                id="cor"
-                                value={veiculo.cor || ''}
-                                autocomplete="off"
-                            />
-                        </div>
-                        <button
-                            type="button"
-                            onClick={handleEditVeiculo}
-                            className="bg-green-500 hover:bg-green-700 transition duration-200 font-bold text-center shadow-md text-white py-2 px-4 rounded w-1/2">
-                            Salvar
-                        </button>
-                    </form>
+                    <VehicleForm initialValues={veiculo} onSubmit={handleEditVeiculo} />
                 </section>
             </main>
             <Footer />

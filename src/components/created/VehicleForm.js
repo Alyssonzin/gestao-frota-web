@@ -2,6 +2,7 @@
 import Input from "./Input"
 import { useEffect, useState } from "react";
 import Veiculo from "@/utils/objects/Veiculo";
+import { maxLengthNumbers } from "../../utils/Masks";
 
 export default function VehicleForm({ initialValues = Veiculo, onSubmit }) {
     const [veiculo, setVeiculo] = useState(initialValues);
@@ -16,8 +17,11 @@ export default function VehicleForm({ initialValues = Veiculo, onSubmit }) {
         setVeiculo({
             ...veiculo,
             ano: name === 'ano' ? parseInt(value) : veiculo.ano,
+            renavam: name === 'renavam' ? value = maxLengthNumbers(value, 11) : veiculo.renavam,
             [name]: value
         })
+
+        event.target.value = value;
     }
 
     return (

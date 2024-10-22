@@ -86,6 +86,7 @@ export const createVehicle = async (data) => {
 }
 
 export const updateVehicle = async (id, data) => {
+    data.ano = parseInt(data.ano);
     return api.put(`/vehicle/${id}`, data).then(res => {
         return res.data;
     }).catch(error => {
