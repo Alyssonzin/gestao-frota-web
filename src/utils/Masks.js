@@ -1,8 +1,3 @@
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-dayjs.extend(customParseFormat);
-
-
 export const cpfMask = (cpf) => {
     return cpf
         .replace(/\D/g, '') // Remove caracteres não numéricos
