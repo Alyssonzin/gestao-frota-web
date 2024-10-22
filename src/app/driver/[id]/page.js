@@ -124,9 +124,20 @@ export default function AtualizarMotorista({ params }) {
                                         autocomplete="off"
                                     />
                                 </div>
+                                <div className="w-full">
+                                    <span>Cidade:</span>
+                                    <Input
+                                        type="text"
+                                        name="cidade"
+                                        id="cidade"
+                                        onChange={handleChange}
+                                        value={motorista.cidade || ''}
+                                        autocomplete="off"
+                                    />
+                                </div>
                             </div>
                         </form>
-                        
+
                         <button
                             type="button"
                             onClick={handleEditaMotorista}
