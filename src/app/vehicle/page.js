@@ -9,15 +9,19 @@ import { getVehicles } from "@/api/routes";
 
 export default function Veiculos() {
     const [pesquisa, setPesquisa] = useState('');
-    const [veiculos, setVeiculos] = useState([]);
+    const [veiculos, setVeiculos] = useState();
 
     const colunas = ['id', 'modelo', 'placa'];
     const headers = ['#', 'Modelo', 'Placa'];
 
     useEffect(() => {
         const getVeiculos = async () => {
-            const data = await getVehicles();
-            setVeiculos(data);
+            try {
+                const data = await getVehicles();
+                setVeiculos(data);
+            } catch (error) {
+                setVeiculos();
+            }
         }
         getVeiculos();
     }, []);
