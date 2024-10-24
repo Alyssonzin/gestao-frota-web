@@ -3,7 +3,6 @@ import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import Table from "@/components/created/Table";
-import Footer from "@/components/created/Footer";
 import { useState, useEffect } from "react";
 import { getVehicles } from "@/api/routes";
 

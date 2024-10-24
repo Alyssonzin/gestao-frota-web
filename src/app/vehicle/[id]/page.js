@@ -3,10 +3,9 @@
 import NavAdmin from "@/components/created/NavAdmin";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Footer from "@/components/created/Footer";
 import { getVehicleById, updateVehicle } from "@/api/routes";
 import Veiculo from "@/utils/objects/Veiculo";
-import VehicleForm from "@/components/created/VehicleForm";
+import VehicleForm from "@/components/created/Vehicle/VehicleForm";
 
 export default function AtualizarVeiculo({ params }) {
     const { id } = params;

@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { CheckboxWithText } from "@/components/created/Checkbox"
 import Input from "@/components/created/Input"
-import Footer from "@/components/created/Footer"
 import NavHome from "@/components/created/NavHome"
 import InputPassword from "@/components/created/InputPassword"
 

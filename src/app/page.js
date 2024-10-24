@@ -1,4 +1,4 @@
-import Footer from "@/components/created/Footer";
+
 import NavHome from "@/components/created/NavHome";
 
 export default function Home() {

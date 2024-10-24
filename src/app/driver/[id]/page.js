@@ -2,11 +2,11 @@
 
 import NavAdmin from "@/components/created/NavAdmin";
 import { useEffect, useState } from "react";
-import Footer from "@/components/created/Footer";
+
 import { getDriverById, updateDriver } from "@/api/routes";
 import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
-import DriverForm from "@/components/created/DriverForm";
+import DriverForm from "@/components/created/Driver/DriverForm";
 
 export default function AtualizarMotorista({ params }) {
     const { id } = params;

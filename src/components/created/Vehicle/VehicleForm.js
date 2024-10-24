@@ -1,5 +1,5 @@
 "use client"
-import Input from "./Input"
+import Input from "../Input"
 import { useEffect, useState } from "react";
 import Veiculo from "@/utils/objects/Veiculo";
 import { maxLengthNumbers } from "@/utils/Masks";

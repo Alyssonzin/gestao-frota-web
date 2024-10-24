@@ -1,5 +1,5 @@
 "use client"
-import Input from "./Input"
+import Input from "../Input"
 import { cpfMask, dateMask, maxLengthNumbers, phoneMask } from "@/utils/Masks";
 import { useEffect, useState } from "react";
 import Motorista from "@/utils/objects/Motorista";

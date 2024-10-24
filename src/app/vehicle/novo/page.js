@@ -1,12 +1,11 @@
 "use client"
 
 import NavAdmin from "@/components/created/NavAdmin";
-import Footer from "@/components/created/Footer";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createVehicle } from "@/api/routes";
 import Veiculo from "@/utils/objects/Veiculo";
-import VehicleForm from "@/components/created/VehicleForm";
+import VehicleForm from "@/components/created/Vehicle/VehicleForm";
 
 export default function CadastrarVeiculo() {
     const [veiculo, setVeiculo] = useState(Veiculo);
