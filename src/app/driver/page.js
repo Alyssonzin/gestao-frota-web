@@ -39,33 +39,29 @@ export default function Motoristas() {
     }
 
     return (
-        <>
-            <main className="flex h-screen bg-gray-200">
-                <NavAdmin />
+        <main className="flex h-screen bg-gray-200">
+            <NavAdmin />
 
-                <section className="w-full p-4 ml-8 space-y-6">
-                    <div className="flex justify-between gap-6">
-                        <div className="w-[90%]">
-                            <Input
-                                onChange={handleChange}
-                                onKeyDown={handleSearch}
-                                name="pesquisa"
-                                id="pesquisa"
-                                type="text"
-                                placeholder="Pesquisar"
-                                autocomplete="off"
-                            />
-                        </div>
-                        <Link href="/driver/novo" className="bg-green-500 hover:bg-green-600 transition duration-200 shadow-md rounded-md select-none text-white p-2">Novo +</Link>
+            <section className="w-full p-4 ml-8 space-y-6">
+                <div className="flex justify-between gap-6">
+                    <div className="w-[90%]">
+                        <Input
+                            onChange={handleChange}
+                            onKeyDown={handleSearch}
+                            name="pesquisa"
+                            id="pesquisa"
+                            type="text"
+                            placeholder="Pesquisar"
+                            autocomplete="off"
+                        />
                     </div>
+                    <Link href="/driver/novo" className="bg-green-500 hover:bg-green-600 transition duration-200 shadow-md rounded-md select-none text-white p-2">Novo +</Link>
+                </div>
 
-                    <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                        <Table headers={headers} data={motoristas} columns={colunas} />
-                    </div>
-                </section>
-            </main>
-
-            <Footer />
-        </>
+                <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
+                    <Table headers={headers} data={motoristas} columns={colunas} />
+                </div>
+            </section>
+        </main>
     );
 }

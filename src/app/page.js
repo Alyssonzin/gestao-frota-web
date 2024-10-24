@@ -14,10 +14,7 @@ export default function Home() {
           Bem-vindo ao <span className="text-blue-600">Drivers Company</span>
         </h1>
         <p className="mt-3 text-2xl select-none">Sistema de Gestão de Frotas</p>
-
       </main>
-
-      <Footer />
     </>
   );
 }

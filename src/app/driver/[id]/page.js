@@ -36,18 +36,15 @@ export default function AtualizarMotorista({ params }) {
     }
 
     return (
-        <>
-            <main className="flex h-screen bg-gray-200">
-                <NavAdmin />
+        <main className="flex h-screen bg-gray-200">
+            <NavAdmin />
 
-                <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
+            <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
 
-                    <h1 className="text-3xl font-bold text-center">Editar motorista</h1>
+                <h1 className="text-3xl font-bold text-center">Editar motorista</h1>
 
-                    <DriverForm initialValues={motorista} onSubmit={handleEditaMotorista} />
-                </section>
-            </main>
-            <Footer />
-        </>
+                <DriverForm initialValues={motorista} onSubmit={handleEditaMotorista} />
+            </section>
+        </main>
     )
 }

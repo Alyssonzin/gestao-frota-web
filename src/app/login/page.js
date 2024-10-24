@@ -25,8 +25,6 @@ export default function Login() {
                     <CheckboxWithText text={'Lembrar-me'} />
                 </form>
             </main>
-
-            <Footer />
         </>
     )
 }
