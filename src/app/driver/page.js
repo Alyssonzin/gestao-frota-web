@@ -2,10 +2,9 @@
 import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
-import Table from "@/components/created/Table";
-
 import { useState, useEffect } from "react";
 import { getDrivers } from "@/api/routes";
+import DriverTable from "@/components/created/driver/DriverTable";
 
 export default function Motoristas() {
     const [pesquisa, setPesquisa] = useState('');
@@ -52,16 +51,15 @@ export default function Motoristas() {
                             id="pesquisa"
                             type="text"
                             placeholder="Pesquisar"
-                            autocomplete="off"
                         />
                     </div>
                     <Link href="/driver/novo" className="bg-green-500 hover:bg-green-600 transition duration-200 shadow-md rounded-md select-none text-white p-2">Novo +</Link>
                 </div>
 
                 <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                    <Table headers={headers} data={motoristas} columns={colunas} />
+                    <DriverTable data={motoristas} />
                 </div>
             </section>
         </main>
-    );
+    )
 }

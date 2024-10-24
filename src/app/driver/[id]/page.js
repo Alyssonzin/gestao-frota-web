@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { getDriverById, updateDriver } from "@/api/routes";
 import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
-import DriverForm from "@/components/created/Driver/DriverForm";
+import DriverForm from "@/components/created/driver/DriverForm";
 
 export default function AtualizarMotorista({ params }) {
     const { id } = params;

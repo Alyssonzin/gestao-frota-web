@@ -2,16 +2,13 @@
 import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
-import Table from "@/components/created/Table";
 import { useState, useEffect } from "react";
 import { getVehicles } from "@/api/routes";
+import VehicleTable from "@/components/created/vehicle/VehicleTable";
 
 export default function Veiculos() {
     const [pesquisa, setPesquisa] = useState('');
     const [veiculos, setVeiculos] = useState();
-
-    const colunas = ['id', 'modelo', 'placa'];
-    const headers = ['#', 'Modelo', 'Placa'];
 
     useEffect(() => {
         const getVeiculos = async () => {
@@ -51,14 +48,13 @@ export default function Veiculos() {
                             name="pesquisa"
                             type="text"
                             placeholder="Pesquisar"
-                            autocomplete="off"
                         />
                     </div>
                     <Link href="/vehicle/novo" className="bg-green-500 hover:bg-green-600 transition duration-200 shadow-md rounded-md select-none text-white p-2">Novo +</Link>
                 </div>
 
                 <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                    <Table headers={headers} data={veiculos} columns={colunas} />
+                    <VehicleTable data={veiculos} />
                 </div>
             </section>
         </main>

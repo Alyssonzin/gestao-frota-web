@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createVehicle } from "@/api/routes";
 import Veiculo from "@/utils/objects/Veiculo";
-import VehicleForm from "@/components/created/Vehicle/VehicleForm";
+import VehicleForm from "@/components/created/vehicle/VehicleForm";
 
 export default function CadastrarVeiculo() {
     const [veiculo, setVeiculo] = useState(Veiculo);

@@ -1,7 +1,7 @@
 "use client"
 
 import NavAdmin from "@/components/created/NavAdmin";
-import DriverForm from "@/components/created/Driver/DriverForm";
+import DriverForm from "@/components/created/driver/DriverForm";
 
 import { useRouter } from "next/navigation";
 import { createDriver } from "@/api/routes";
