@@ -9,8 +9,6 @@ import DriverTable from "@/components/created/driver/DriverTable";
 export default function Motoristas() {
     const [pesquisa, setPesquisa] = useState('');
     const [motoristas, setMotoristas] = useState();
-    const colunas = ['id', 'nome', 'cpf'];
-    const headers = ['#', 'Nome', 'CPF'];
 
     useEffect(() => {
         const getMotoristas = async () => {
