@@ -13,8 +13,8 @@ export const api = axios.create({
 export const getDrivers = async () => {
     return api.get('/driver').then(res => {
         const drivers = res.data;
-        drivers.map(driver => {
-            driver.cpf = cpfMask(driver.cpf); //Formata o CPF
+        drivers.forEach(driver => {
+            driver.user.cpf = cpfMask(driver.user.cpf); //Formata o CPF
         });
         return drivers;
     }).catch(error => {

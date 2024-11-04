@@ -26,10 +26,10 @@ export default function DriverTable({ data }) {
                 {
                     //Se data não for vazio, cria uma linha pra cada item.
                     data ? data.map((item) => (
-                        <tr key={item.id} className="border-t h-14">
+                        <tr key={item.id} className={item.aproved ? "border-t h-14" : "border-t h-14 bg-red-300"}>
                             <td>{item.id}</td>
-                            <td>{item.nome}</td>
-                            <td>{item.cpf}</td>
+                            <td>{`${item.user.name} ${item.user.last_name}`}</td>
+                            <td>{item.user.cpf}</td>
 
                             <td className="space-x-4 w-1/4">
                                 <DropdownMenu>
