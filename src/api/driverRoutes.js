@@ -14,6 +14,18 @@ export const getDrivers = async () => {
     });
 }
 
+export const getPendingDrivers = async () => {
+    return api.get('/driver/pending').then(res => {
+        const drivers = res.data;
+        drivers.forEach(driver => {
+            driver.user.cpf = cpfMask(driver.user.cpf); //Formata o CPF
+        });
+        return drivers;
+    }).catch(error => {
+        throw error;
+    });
+}
+
 export const getDriverById = async (id) => {
     return api.get(`/driver/${id}`).then(res => {
         const driver = res.data;

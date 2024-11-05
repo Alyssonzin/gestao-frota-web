@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { UsersRound, CarFront } from 'lucide-react';
+import { UsersRound, CarFront, UserRoundPen } from 'lucide-react';
 
 export default function NavAdmin() {
     return (
@@ -15,6 +15,12 @@ export default function NavAdmin() {
                     <li className="w-full flex justify-center text-white hover:bg-gray-500">
                         <Link href="/vehicle" className="flex justify-center h-full w-full py-5">
                             <CarFront size={35} />
+                        </Link>
+                    </li>
+
+                    <li className="w-full flex justify-center text-white hover:bg-gray-500">
+                        <Link href="/driver/pendings" className="flex justify-center h-full w-full py-5">
+                            <UserRoundPen size={35} />
                         </Link>
                     </li>
                 </ul>

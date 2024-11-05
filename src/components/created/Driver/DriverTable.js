@@ -26,7 +26,7 @@ export default function DriverTable({ data }) {
                 {
                     //Se data não for vazio, cria uma linha pra cada item.
                     data ? data.map((item) => (
-                        <tr key={item.id} className={item.aproved ? "border-t h-14" : "border-t h-14 bg-red-300"}>
+                        <tr key={item.id} className="border-t h-14">
                             <td>{item.id}</td>
                             <td>{`${item.user.name} ${item.user.last_name}`}</td>
                             <td>{item.user.cpf}</td>
