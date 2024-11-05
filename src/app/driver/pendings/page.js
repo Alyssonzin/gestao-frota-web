@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
 import Link from "next/link";
-import DriverTable from "@/components/created/Driver/DriverTable";
-import { getPendingDrivers } from "@/api/routes";
+import DriverTable from "@/components/created/driver/DriverTable";
+import { getPendingDrivers } from "@/api/driverRoutes";
 
 export default function Pendentes() {
     const [pesquisa, setPesquisa] = useState('');
