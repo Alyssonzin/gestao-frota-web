@@ -14,7 +14,8 @@ export default function Motoristas() {
         const getMotoristas = async () => {
             try {
                 const data = await getDrivers();
-                setMotoristas(data);
+                const driversAproved = data.filter(driver => driver.status === 'approved');
+                setMotoristas(driversAproved);
             } catch (error) {
                 setMotoristas();
             }
@@ -51,7 +52,6 @@ export default function Motoristas() {
                             placeholder="Pesquisar"
                         />
                     </div>
-                    <Link href="/driver/novo" className="bg-green-500 hover:bg-green-600 transition duration-200 shadow-md rounded-md select-none text-white p-2">Novo +</Link>
                 </div>
 
                 <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
