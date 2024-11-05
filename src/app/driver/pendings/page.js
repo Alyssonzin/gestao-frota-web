@@ -1,25 +1,25 @@
 "use client";
-import Link from "next/link";
-import Input from "@/components/created/Input";
+import { useEffect, useState } from "react";
 import NavAdmin from "@/components/created/NavAdmin";
-import { useState, useEffect } from "react";
-import { getDrivers } from "@/api/routes";
+import Input from "@/components/created/Input";
+import Link from "next/link";
 import DriverTable from "@/components/created/Driver/DriverTable";
+import { getPendingDrivers } from "@/api/routes";
 
-export default function Motoristas() {
+export default function Pendentes() {
     const [pesquisa, setPesquisa] = useState('');
     const [motoristas, setMotoristas] = useState();
 
     useEffect(() => {
-        const getMotoristas = async () => {
+        const getMotoristasPendentes = async () => {
             try {
-                const data = await getDrivers();
+                const data = await getPendingDrivers();
                 setMotoristas(data);
             } catch (error) {
                 setMotoristas();
             }
         }
-        getMotoristas();
+        getMotoristasPendentes();
     }, []);
 
     const handleChange = (event) => {
