@@ -1,7 +1,7 @@
 "use client";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react";
-import { deleteDriver } from "@/api/routes";
+import { deleteDriver } from "@/api/driverRoutes";
 import Link from "next/link";
 export default function DriverTable({ data }) {
     const handleDelete = async (id) => {

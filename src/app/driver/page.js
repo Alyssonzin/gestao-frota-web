@@ -3,7 +3,7 @@ import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import { useState, useEffect } from "react";
-import { getDrivers } from "@/api/routes";
+import { getDrivers } from "@/api/driverRoutes";
 import DriverTable from "@/components/created/driver/DriverTable";
 
 export default function Motoristas() {

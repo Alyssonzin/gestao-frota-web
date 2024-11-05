@@ -3,7 +3,7 @@ import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import { useState, useEffect } from "react";
-import { getVehicles } from "@/api/routes";
+import { getVehicles } from "@/api/vehicleRouter";
 import VehicleTable from "@/components/created/vehicle/VehicleTable";
 
 export default function Veiculos() {

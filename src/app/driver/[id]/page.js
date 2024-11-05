@@ -2,8 +2,7 @@
 
 import NavAdmin from "@/components/created/NavAdmin";
 import { useEffect, useState } from "react";
-
-import { getDriverById, updateDriver } from "@/api/routes";
+import { getDriverById, updateDriver } from "@/api/driverRoutes";
 import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
 import DriverForm from "@/components/created/driver/DriverForm";

@@ -3,7 +3,7 @@
 import NavAdmin from "@/components/created/NavAdmin";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createVehicle } from "@/api/routes";
+import { createVehicle } from "@/api/vehicleRouter";
 import Veiculo from "@/utils/objects/Veiculo";
 import VehicleForm from "@/components/created/vehicle/VehicleForm";
 
