@@ -15,14 +15,8 @@ export default function DriverForm({ initialValues = Motorista, onSubmit }) {
         <div className="space-y-4">
             
 
-            <div>
-                <div>
-                    <Image src={motorista.cnh_picture} height={150} alt="Foto da cnh" />
-                </div>
-                <div>
-                    <Image src={motorista.profile_doc_picture} height={150} alt="Foto do motorista com a cnh" />
-                </div>
-            </div>
+
+
         </div>
     )
 }

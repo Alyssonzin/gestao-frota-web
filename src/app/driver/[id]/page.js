@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { getDriverById, updateDriver } from "@/api/driverRoutes";
 import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
-import DriverForm from "@/components/created/driver/DriverForm";
+import DriverForm from "@/components/created/Driver/DriverForm";
+import Image from "next/image";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../../components/ui/carousel";
 
 export default function AtualizarMotorista({ params }) {
     const { id } = params;
@@ -18,7 +20,7 @@ export default function AtualizarMotorista({ params }) {
                 const driver = await getDriverById(id);
                 setMotorista(driver);
             } catch (error) {
-                alert('Erro ao carregar os dados do motorista');
+
             }
         }
         getMotorista();
@@ -38,11 +40,31 @@ export default function AtualizarMotorista({ params }) {
         <main className="flex h-screen bg-gray-200">
             <NavAdmin />
 
-            <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
+            <section className="flex w-full p-4 ml-8 space-y-6">
+                <div className="flex w-full p-3 bg-purple-300">
+                    <div className="w-[20%]">
+                        <Carousel className="border border-black ">
+                            <CarouselContent>
+                                <CarouselItem>
+                                    <Image src="/logomarca.jpg" width={200} height={200} />
+                                </CarouselItem>
+                                <CarouselItem>
+                                    <Image src="/images/2.jpg" width={200} height={200} />
+                                </CarouselItem>
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                        </Carousel>
+                        <h2 className="text-center font-bold">Alysson Pereira dos Santos</h2>
+                    </div>
 
-                <h1 className="text-3xl font-bold text-center">Visualizar</h1>
+                    <div>
+                        
+                    </div>
+                </div>
 
-                <DriverForm initialValues={motorista} onSubmit={handleEditaMotorista} />
+
+
             </section>
         </main>
     )
