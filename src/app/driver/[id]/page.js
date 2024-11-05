@@ -40,7 +40,7 @@ export default function AtualizarMotorista({ params }) {
 
             <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
 
-                <h1 className="text-3xl font-bold text-center">Editar motorista</h1>
+                <h1 className="text-3xl font-bold text-center">Visualizar</h1>
 
                 <DriverForm initialValues={motorista} onSubmit={handleEditaMotorista} />
             </section>
