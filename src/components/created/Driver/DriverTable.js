@@ -25,8 +25,8 @@ export default function DriverTable({ data }) {
             <tbody className="text-center">
                 {
                     //Se data não for vazio, cria uma linha pra cada item.
-                    data ? data.map((item) => (
-                        <tr key={item.id} className="border-t h-14">
+                    data ? data.map((item, index) => (
+                        <tr key={item.id} className={index % 2 == 0 ? "border-t h-14" : "border-t h-14 bg-slate-200"}>
                             <td>{item.id}</td>
                             <td>{`${item.user.name} ${item.user.last_name}`}</td>
                             <td>{item.user.cpf}</td>
