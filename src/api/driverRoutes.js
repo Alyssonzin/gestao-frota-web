@@ -29,9 +29,9 @@ export const getPendingDrivers = async () => {
 export const getDriverById = async (id) => {
     return api.get(`/driver/${id}`).then(res => {
         const driver = res.data;
-        driver.data_nasc = dateFormat(driver.data_nasc); //Formata a data de nascimento
-        driver.cpf = cpfMask(driver.cpf); //Formata o CPF
-        driver.telefone = phoneMask(driver.telefone); //Formata o telefone
+        //driver.user.birth_date = dateFormat(driver.data_nasc); //Formata a data de nascimento
+        driver.user.cpf = cpfMask(driver.user.cpf); //Formata o CPF
+        driver.user.phone = phoneMask(driver.user.phone); //Formata o telefone
         return driver;
     }).catch(error => {
         throw error;
