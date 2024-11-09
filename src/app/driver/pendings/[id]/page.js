@@ -90,7 +90,6 @@ export default function MotoristaPendente({ params }) {
                             <p><span className="font-bold">Renavam:</span> {veiculo.renavam}</p>
                         </div>
                     </div>
-
                 </div>
             </section>
         </main>

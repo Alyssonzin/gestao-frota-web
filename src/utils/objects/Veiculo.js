@@ -1,9 +1,11 @@
 const Veiculo = {
-    modelo: '',
-    ano: '',
-    cor: '',
-    placa: '',
+    model: '',
+    year: '',
+    color: '',
+    plate: '',
     renavam: '',
+    brand: '',
+    vehicle_pictures: [],
 }
 
 export default Veiculo;
