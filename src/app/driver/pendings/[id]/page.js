@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import { getDriverById, updateDriver } from "@/api/driverRoutes";
 import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
-import DriverForm from "@/components/created/driver/DriverForm";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../../../components/ui/carousel";
+import Veiculo from "@/utils/objects/Veiculo";
 
 export default function MotoristaPendente({ params }) {
     const { id } = params;
     const [motorista, setMotorista] = useState(Motorista);
+    const [veiculo, setveiculo] = useState(Veiculo);
     const router = useRouter();
 
     useEffect(() => {
@@ -30,7 +31,7 @@ export default function MotoristaPendente({ params }) {
         <main className="flex h-screen bg-gray-200">
             <NavAdmin />
 
-            <section className="flex w-full p-4 ml-8 space-y-6">
+            <section className="flex flex-col w-full p-4 ml-8 space-y-10">
                 <div className="flex w-full p-3">
                     <div className="w-[20%] mr-16">
                         <Carousel className="border border-black">
@@ -58,6 +59,38 @@ export default function MotoristaPendente({ params }) {
                             <p><span className="font-bold">E-mail:</span> {motorista.user.email}</p>
                         </div>
                     </div>
+                </div>
+
+                <hr className="border-2 border-black" />
+
+                <div className="flex w-full p-3">
+                    <div className="w-[20%] mr-16">
+                        <Carousel className="border border-black">
+                            <CarouselContent>
+                                <CarouselItem className="flex justify-center">
+                                    <Image src="/logomarca.jpg" alt="Imagem1" width={200} height={200} />
+                                </CarouselItem>
+                                <CarouselItem className="flex justify-center">
+                                    <Image src="/logomarca.jpg" alt="Imagem2" width={200} height={200} />
+                                </CarouselItem>
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                        </Carousel>
+                    </div>
+
+                    <div>
+                        <div className="space-y-2">
+                            <h2 className="text-xl font-bold mb-4">Informações do Veículo</h2>
+                            <p><span className="font-bold">Placa:</span> {veiculo.plate}</p>
+                            <p><span className="font-bold">Marca:</span> {veiculo.brand}</p>
+                            <p><span className="font-bold">Modelo:</span> {veiculo.model}</p>
+                            <p><span className="font-bold">Ano:</span> {veiculo.year}</p>
+                            <p><span className="font-bold">Cor:</span> {veiculo.color}</p>
+                            <p><span className="font-bold">Renavam:</span> {veiculo.renavam}</p>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </main>
