@@ -27,8 +27,16 @@ export default function MotoristaPendente({ params }) {
         getMotorista();
     }, []);
 
+    const handleAprove = async () => {
+        try {
+            
+            router.push("/admin/drivers");
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
-        <main className="flex h-screen bg-gray-200">
+        <main className="flex min-h-screen bg-gray-200">
             <NavAdmin />
 
             <section className="flex flex-col w-full p-4 ml-8 space-y-10">
@@ -90,6 +98,11 @@ export default function MotoristaPendente({ params }) {
                             <p><span className="font-bold">Renavam:</span> {veiculo.renavam}</p>
                         </div>
                     </div>
+                </div>
+
+                <div className="flex justify-center text-white">
+                    <button onClick={handleAprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
+                    <button className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
                 </div>
             </section>
         </main>

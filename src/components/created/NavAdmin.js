@@ -3,7 +3,7 @@ import { UsersRound, CarFront, UserRoundPen } from 'lucide-react';
 
 export default function NavAdmin() {
     return (
-        <aside className="flex flex-col items-center h-full min-w-20 shadow-inner bg-gray-800 pt-10">
+        <aside className="flex flex-col items-center min-w-20 shadow-inner bg-gray-800 pt-10">
             <nav className="sticky top-10 w-full">
                 <ul className="flex flex-col items-center">
                     <li className="w-full flex justify-center text-white hover:bg-gray-500">
