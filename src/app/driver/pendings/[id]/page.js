@@ -7,11 +7,17 @@ import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../../../components/ui/carousel";
+import Modal from "../../../../components/created/Modal";
 
 export default function MotoristaPendente({ params }) {
     const { id } = params;
     const [motorista, setMotorista] = useState(Motorista);
+    const [showModal, setShowModal] = useState(false);
+    const [disaproveMessage, setDisaproveMessage] = useState();
     const router = useRouter();
+
+    const openModal = () => setShowModal(true);
+    const closeModal = () => setShowModal(false);
 
     useEffect(() => {
         const getMotorista = async () => {
@@ -33,6 +39,20 @@ export default function MotoristaPendente({ params }) {
             console.log(error);
         }
     }
+
+    const handleChangeMessage = (event) => {
+        setDisaproveMessage(event.target.value);
+    }
+
+    const handleDisaprove = async () => {
+        try {
+
+            router.push("/drivers");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <main className="flex min-h-screen bg-gray-200">
             <NavAdmin />
@@ -85,6 +105,30 @@ export default function MotoristaPendente({ params }) {
                         </Carousel>
                     </div>
 
+                    <Modal showModal={showModal} closeModal={closeModal}>
+                        <h2 className="text-xl font-bold mb-4">Recusar motorista</h2>
+                        <p>Deixe uma mensagem:</p>
+                        <textarea 
+                            className="border bg-slate-200 mt-3 p-2 w-full h-52 rounded-xl resize-none"
+                            onChange={handleChangeMessage}
+                        />
+
+                        <div className="mt-4 text-right space-x-3">
+                            <button
+                                className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+                                onClick={handleDisaprove}
+                            >
+                                Enviar
+                            </button>
+                            <button
+                                className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
+                                onClick={closeModal}
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </Modal>
+
                     <div>
                         <div className="space-y-2">
                             <h2 className="text-xl font-bold mb-4">Informações do Veículo</h2>
@@ -100,7 +144,7 @@ export default function MotoristaPendente({ params }) {
 
                 <div className="flex justify-center text-white">
                     <button onClick={handleAprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
-                    <button className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
+                    <button onClick={openModal} className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
                 </div>
             </section>
         </main>
