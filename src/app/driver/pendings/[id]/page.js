@@ -13,6 +13,7 @@ export default function MotoristaPendente({ params }) {
     const { id } = params;
     const [motorista, setMotorista] = useState(Motorista);
     const [showModal, setShowModal] = useState(false);
+    const [disaproveError, setDisaproveError] = useState(false);
     const [disaproveMessage, setDisaproveMessage] = useState();
     const router = useRouter();
 
@@ -36,7 +37,7 @@ export default function MotoristaPendente({ params }) {
             await aproveDriver(id);
             router.push("/drivers");
         } catch (error) {
-            console.log(error);
+            
         }
     }
 
@@ -46,10 +47,10 @@ export default function MotoristaPendente({ params }) {
 
     const handleDisaprove = async () => {
         try {
-
+            await aproveDriver(id, disaproveMessage);
             router.push("/drivers");
         } catch (error) {
-            console.log(error);
+            setDisaproveError(true);
         }
     }
 
@@ -60,6 +61,9 @@ export default function MotoristaPendente({ params }) {
             <Modal showModal={showModal} closeModal={closeModal}>
                 <h2 className="text-xl font-bold mb-4">Recusar motorista</h2>
                 <p>Deixe uma mensagem:</p>
+                {
+                    disaproveError && <p className="text-red-500">Ocorreu um erro ao reprovar este motorista.</p>
+                }
                 <textarea
                     className="border bg-slate-200 mt-3 p-2 w-full h-52 rounded-xl resize-none"
                     onChange={handleChangeMessage}
