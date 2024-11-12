@@ -38,6 +38,14 @@ export const getDriverById = async (id) => {
     })
 }
 
+export const aproveDriver = async (id) => {
+    return api.put(`/driver/${id}/aprove`).then(res => {
+        return res.data;
+    }).catch(error => {
+        throw error;
+    })
+}
+
 export const createDriver = async (data) => {
     return api.post('/driver', data).then(res => {
         return res.data;

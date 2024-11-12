@@ -27,8 +27,8 @@ export default function MotoristaPendente({ params }) {
 
     const handleAprove = async () => {
         try {
-            await aproveDriver(id, { aproved: true });
-            router.push("/admin/drivers");
+            await aproveDriver(id);
+            router.push("/drivers");
         } catch (error) {
             console.log(error);
         }
