@@ -14,7 +14,7 @@ export default function Motoristas() {
         const getMotoristas = async () => {
             try {
                 const data = await getDrivers();
-                const driversAproved = data.filter(driver => driver.status === 'approved');
+                const driversAproved = data.filter(driver => driver.aproved);
                 setMotoristas(driversAproved);
             } catch (error) {
                 setMotoristas();
