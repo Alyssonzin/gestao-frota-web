@@ -7,12 +7,10 @@ import { useRouter } from "next/navigation";
 import Motorista from "@/utils/objects/Motorista";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../../../components/ui/carousel";
-import Veiculo from "@/utils/objects/Veiculo";
 
 export default function MotoristaPendente({ params }) {
     const { id } = params;
     const [motorista, setMotorista] = useState(Motorista);
-    const [veiculo, setveiculo] = useState(Veiculo);
     const router = useRouter();
 
     useEffect(() => {
@@ -29,7 +27,7 @@ export default function MotoristaPendente({ params }) {
 
     const handleAprove = async () => {
         try {
-            
+            await aproveDriver(id, { aproved: true });
             router.push("/admin/drivers");
         } catch (error) {
             console.log(error);
@@ -45,10 +43,10 @@ export default function MotoristaPendente({ params }) {
                         <Carousel className="border border-black">
                             <CarouselContent>
                                 <CarouselItem className="flex justify-center">
-                                    <Image src="/logomarca.jpg" alt="Imagem1" width={200} height={200} />
+                                    <Image src={motorista.profile_doc_picture} alt="Imagem1" width={300} height={300} />
                                 </CarouselItem>
                                 <CarouselItem className="flex justify-center">
-                                    <Image src="/logomarca.jpg" alt="Imagem2" width={200} height={200} />
+                                    <Image src={motorista.cnh_picture} alt="Imagem2" width={300} height={300} />
                                 </CarouselItem>
                             </CarouselContent>
                             <CarouselPrevious />
@@ -90,12 +88,12 @@ export default function MotoristaPendente({ params }) {
                     <div>
                         <div className="space-y-2">
                             <h2 className="text-xl font-bold mb-4">Informações do Veículo</h2>
-                            <p><span className="font-bold">Placa:</span> {veiculo.plate}</p>
-                            <p><span className="font-bold">Marca:</span> {veiculo.brand}</p>
-                            <p><span className="font-bold">Modelo:</span> {veiculo.model}</p>
-                            <p><span className="font-bold">Ano:</span> {veiculo.year}</p>
-                            <p><span className="font-bold">Cor:</span> {veiculo.color}</p>
-                            <p><span className="font-bold">Renavam:</span> {veiculo.renavam}</p>
+                            <p><span className="font-bold">Placa:</span> {motorista.vehicle.plate}</p>
+                            <p><span className="font-bold">Marca:</span> {motorista.vehicle.brand}</p>
+                            <p><span className="font-bold">Modelo:</span> {motorista.vehicle.model}</p>
+                            <p><span className="font-bold">Ano:</span> {motorista.vehicle.year}</p>
+                            <p><span className="font-bold">Cor:</span> {motorista.vehicle.color}</p>
+                            <p><span className="font-bold">Renavam:</span> {motorista.vehicle.renavam}</p>
                         </div>
                     </div>
                 </div>

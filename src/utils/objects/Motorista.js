@@ -14,7 +14,15 @@ const Motorista = {
         type: "",
         active: null,
         avatar: "",
-    }
+    },
+    vehicle: {
+        plate: "",
+        brand: "",
+        model: "",
+        year: 0,
+        color: "",
+        renavam: "",
+    },
 }
 
 export default Motorista;
