@@ -28,8 +28,8 @@ export default function VehicleTable({ data }) {
                     data ? data.map((item) => (
                         <tr key={item.id} className="border-t h-14">
                             <td>{item.id}</td>
-                            <td>{item.modelo}</td>
-                            <td>{item.placa}</td>
+                            <td>{item.model}</td>
+                            <td>{item.plate}</td>
 
                             <td className="space-x-4 w-1/4">
                                 <DropdownMenu>
@@ -39,7 +39,7 @@ export default function VehicleTable({ data }) {
                                     <DropdownMenuContent>
                                         <DropdownMenuGroup>
                                             <DropdownMenuItem className="hover:bg-blue-400 hover:text-white cursor-pointer">
-                                                <Link href={`/vehicle/${item.id}`}>Editar</Link>
+                                                <Link href={`/vehicle/${item.id}`}>Visualizar</Link>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem className="hover:bg-red-600 hover:text-white cursor-pointer">
                                                 <button onClick={() => handleDelete(item.id)}>Excluir</button>
