@@ -15,7 +15,7 @@ export default function Pendentes() {
                 const data = await getPendingDrivers();
                 setMotoristas(data);
             } catch (error) {
-                setMotoristas();
+                
             }
         }
         getMotoristasPendentes();

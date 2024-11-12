@@ -39,7 +39,7 @@ export default function DriverTable({ data }) {
                                     <DropdownMenuContent>
                                         <DropdownMenuGroup>
                                             <DropdownMenuItem className="hover:bg-blue-400 hover:text-white cursor-pointer">
-                                                <Link href={`/driver/${item.id}`}>Editar</Link>
+                                                <Link href={`/driver/pendings/${item.id}`}>Visualizar</Link>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem className="hover:bg-red-600 hover:text-white cursor-pointer">
                                                 <button onClick={() => handleDelete(item.id)}>Excluir</button>
