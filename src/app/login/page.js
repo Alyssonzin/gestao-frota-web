@@ -21,6 +21,12 @@ export default function Login() {
     }
 
     const handleSubmit = async (event) => {
+        setForm({
+            ...form,
+            email: form.email.toLowerCase(),
+            time: new Date().getTime(),
+        });
+        
         try {
             await login(form);
             router.push('/driver');
