@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getVehicleById, updateVehicle } from "@/api/vehicleRouter";
 import Veiculo from "@/utils/objects/Veiculo";
-import VehicleForm from "@/components/created/vehicle/VehicleForm";
+import VehicleInformation from "@/components/created/vehicle/VehicleInformation";
 
 export default function AtualizarVeiculo({ params }) {
     const { id } = params;
@@ -35,7 +35,7 @@ export default function AtualizarVeiculo({ params }) {
             <NavAdmin />
             <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
                 <h1 className="text-3xl font-bold text-center">Editar veículo</h1>
-                <VehicleForm initialValues={veiculo} onSubmit={handleEditVeiculo} />
+                <VehicleInformation initialValues={veiculo} onSubmit={handleEditVeiculo} />
             </section>
         </main>
     )

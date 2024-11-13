@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import { getDriverById, aproveDriver } from "@/api/driverRoutes";
 import { useRouter } from "next/navigation";
 import Driver from "@/utils/objects/Motorista";
-import Image from "next/image";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../../../components/ui/carousel";
 import Modal from "../../../../components/created/Modal";
 import DriverInformation from "../../../../components/created/driver/DriverInformation";
+import VehicleInformation from "../../../../components/created/vehicle/VehicleInformation";
 
 export default function MotoristaPendente({ params }) {
     const { id } = params;
@@ -38,7 +37,7 @@ export default function MotoristaPendente({ params }) {
             await aproveDriver(id);
             router.push("/drivers");
         } catch (error) {
-            
+
         }
     }
 
@@ -88,40 +87,10 @@ export default function MotoristaPendente({ params }) {
 
             <section className="flex flex-col w-full p-4 ml-8 space-y-10">
                 <DriverInformation driver={driver} />
-
                 <hr className="border-2 border-black" />
-                {
-                    driver.vehicle && (
-                        <div className="flex w-full p-3">
-                            <div className="w-[20%] mr-16">
-                                <Carousel className="border border-black">
-                                    <CarouselContent>
-                                        <CarouselItem className="flex justify-center">
-                                            <Image src="/logomarca.jpg" alt="Imagem1" width={200} height={200} />
-                                        </CarouselItem>
-                                        <CarouselItem className="flex justify-center">
-                                            <Image src="/logomarca.jpg" alt="Imagem2" width={200} height={200} />
-                                        </CarouselItem>
-                                    </CarouselContent>
-                                    <CarouselPrevious />
-                                    <CarouselNext />
-                                </Carousel>
-                            </div>
+                {driver.vehicle && <VehicleInformation vehicle={driver.vehicle} />}
 
-                            <div>
-                                <div className="space-y-2">
-                                    <h2 className="text-xl font-bold mb-4">Informações do Veículo</h2>
-                                    <p><span className="font-bold">Placa:</span> {driver.vehicle.plate}</p>
-                                    <p><span className="font-bold">Marca:</span> {driver.vehicle.brand}</p>
-                                    <p><span className="font-bold">Modelo:</span> {driver.vehicle.model}</p>
-                                    <p><span className="font-bold">Ano:</span> {driver.vehicle.year}</p>
-                                    <p><span className="font-bold">Cor:</span> {driver.vehicle.color}</p>
-                                    <p><span className="font-bold">Renavam:</span> {driver.vehicle.renavam}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                }
+
                 <div className="flex justify-center text-white">
                     <button onClick={handleAprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
                     <button onClick={openModal} className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
