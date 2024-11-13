@@ -21,9 +21,6 @@ export default function Login() {
     const handleSubmit = async (event) => {
         try {
             await login(form);
-            console.log('Login realizado com sucesso');
-            
-            sessionStorage.setItem('email', form.email);
         } catch (error) {
             console.error(error);
         }
