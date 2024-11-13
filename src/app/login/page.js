@@ -24,7 +24,6 @@ export default function Login() {
         setForm({
             ...form,
             email: form.email.toLowerCase(),
-            time: new Date().getTime(),
         });
         
         try {
