@@ -1,5 +1,4 @@
 import { cpfMask, phoneMask } from "@/utils/Masks";
-import { dateFormat } from "@/utils/dateFormat";
 import { api } from "./api";
 
 export const getDrivers = async () => {
@@ -29,7 +28,6 @@ export const getPendingDrivers = async () => {
 export const getDriverById = async (id) => {
     return api.get(`/driver/${id}`).then(res => {
         const driver = res.data;
-        //driver.user.birth_date = dateFormat(driver.data_nasc); //Formata a data de nascimento
         driver.user.cpf = cpfMask(driver.user.cpf); //Formata o CPF
         driver.user.phone = phoneMask(driver.user.phone); //Formata o telefone
         return driver;
