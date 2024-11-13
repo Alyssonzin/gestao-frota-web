@@ -6,9 +6,11 @@ import NavHome from "@/components/created/NavHome"
 import InputPassword from "@/components/created/InputPassword"
 import { useState } from "react"
 import { login } from "../../api/userRoutes";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
     const [form, setForm] = useState();
+    const router = useRouter();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -21,6 +23,7 @@ export default function Login() {
     const handleSubmit = async (event) => {
         try {
             await login(form);
+            router.push('/driver');
         } catch (error) {
             console.error(error);
         }
