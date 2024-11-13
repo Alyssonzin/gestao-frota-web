@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
 
-const PUBLIC_ROUTES = ['/login'];
 export function middleware(request) {
-    const { pathname } = request.nextUrl;
+    const sessionCookie = request.cookies.get('email');
 
-    //Se a rota acessada não for publica, redireciona para a página de login
-    if(!PUBLIC_ROUTES.includes(pathname)) {
+    if (!sessionCookie) {
         const loginUrl = new URL('/login', request.url);
         return NextResponse.redirect(loginUrl);
     }
