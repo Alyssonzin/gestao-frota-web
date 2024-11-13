@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import { useState, useEffect } from "react";

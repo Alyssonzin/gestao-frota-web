@@ -1,4 +1,4 @@
-const Motorista = {
+const Driver = {
     cnh: "",
     profile_picture: "",
     cnh_picture: "",
@@ -25,4 +25,4 @@ const Motorista = {
     },
 }
 
-export default Motorista;
+export default Driver;
