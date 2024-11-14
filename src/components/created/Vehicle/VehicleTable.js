@@ -2,6 +2,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react";
 import { deleteVehicle } from "@/api/vehicleRouter";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 export default function VehicleTable({ data }) {
     const handleDelete = async (id) => {
