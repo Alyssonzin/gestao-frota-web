@@ -5,31 +5,45 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export default function DriverInformation({ driver }) {
 
     return (
-        <div className="flex w-full p-3">
-            <div className="w-[20%] mr-16">
-                <Carousel className="border border-black">
+        <div className="space-y-10 w-full p-6 bg-gray-50 rounded-lg shadow-lg">
+            <div className="flex items-center flex-col mb-6">
+                <Carousel className="border-2 w-1/4 border-gray-300 rounded-lg">
                     <CarouselContent>
                         <CarouselItem className="flex justify-center">
-                            <Image src={driver.profile_doc_picture || "/logomarca.jpg"} alt="Imagem1" width={300} height={300} />
+                            <Image
+                                src={driver.profile_doc_picture || "/logomarca.jpg"}
+                                alt="Imagem de perfil"
+                                width={300}
+                                height={300}
+                                className="rounded-full shadow-md"
+                            />
                         </CarouselItem>
                         <CarouselItem className="flex justify-center">
-                            <Image src={driver.cnh_picture || "/logomarca.jpg"} alt="Imagem2" width={300} height={300} />
+                            <Image
+                                src={driver.cnh_picture || "/logomarca.jpg"}
+                                alt="Imagem CNH"
+                                width={300}
+                                height={300}
+                                className="rounded-lg shadow-md"
+                            />
                         </CarouselItem>
                     </CarouselContent>
                     <CarouselPrevious />
                     <CarouselNext />
                 </Carousel>
-                <h2 className="text-xl text-center font-bold m-2">{`${driver.user.name} ${driver.user.last_name}`}</h2>
+                <h2 className="text-2xl text-center font-semibold mt-4">{`${driver.user.name} ${driver.user.last_name}`}</h2>
             </div>
 
-            <div>
-                <div className="space-y-2">
-                    <h2 className="text-xl font-bold mb-4">Informações Pessoais</h2>
-                    <p><span className="font-bold">CPF:</span> {driver.user.cpf}</p>
-                    <p><span className="font-bold">Data de Nascimento:</span> {driver.user.birth_date}</p>
-                    <p><span className="font-bold">CNH:</span> {driver.cnh}</p>
-                    <p><span className="font-bold">Telefone:</span> {driver.user.phone}</p>
-                    <p><span className="font-bold">E-mail:</span> {driver.user.email}</p>
+            <div className="w-full">
+                <div className="space-y-4">
+                    <h2 className="text-xl font-semibold text-gray-700 mb-4">Informações Pessoais</h2>
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <p><span className="font-bold text-gray-600">CPF:</span> {driver.user.cpf}</p>
+                        <p><span className="font-bold text-gray-600">Data de Nascimento:</span> {driver.user.birth_date}</p>
+                        <p><span className="font-bold text-gray-600">CNH:</span> {driver.cnh}</p>
+                        <p><span className="font-bold text-gray-600">Telefone:</span> {driver.user.phone}</p>
+                        <p><span className="font-bold text-gray-600">E-mail:</span> {driver.user.email}</p>
+                    </div>
                 </div>
             </div>
         </div>

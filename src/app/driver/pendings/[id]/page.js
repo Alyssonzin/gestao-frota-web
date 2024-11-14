@@ -87,8 +87,9 @@ export default function MotoristaPendente({ params }) {
 
             <section className="flex flex-col w-full p-4 ml-8 space-y-10">
                 <DriverInformation driver={driver} />
-                <hr className="border-2 border-black" />
+                <hr className="border-2 border-slate-600 rounded" />
                 {driver.vehicle && <VehicleInformation vehicle={driver.vehicle} />}
+                <hr className="border-2 border-slate-600 rounded" />
 
 
                 <div className="flex justify-center text-white">
