@@ -2,6 +2,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react";
 import { deleteDriver } from "@/api/driverRoutes";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 export default function DriverTable({ data }) {
     const handleDelete = async (id) => {
@@ -39,7 +40,13 @@ export default function DriverTable({ data }) {
                                     <DropdownMenuContent>
                                         <DropdownMenuGroup>
                                             <DropdownMenuItem className="hover:bg-blue-400 hover:text-white cursor-pointer">
-                                                <Link href={`/driver/pendings/${item.id}`}>Visualizar</Link>
+                                                <Link href={
+                                                    usePathname().includes('pendings') ?
+                                                        `/driver/pendings/${item.id}` :
+                                                        `/driver/${item.id}`
+                                                }
+                                                >Visualizar
+                                                </Link>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem className="hover:bg-red-600 hover:text-white cursor-pointer">
                                                 <button onClick={() => handleDelete(item.id)}>Desativar</button>
@@ -52,6 +59,6 @@ export default function DriverTable({ data }) {
                     )) : <tr><td colSpan="3">Nenhum dado encontrado</td></tr>
                 }
             </tbody>
-        </table>
+        </table >
     );
 }
