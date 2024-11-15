@@ -8,10 +8,12 @@ import Driver from "@/utils/objects/Motorista";
 import Modal from "../../../../components/created/Modal";
 import DriverInformation from "../../../../components/created/driver/DriverInformation";
 import VehicleInformation from "../../../../components/created/vehicle/VehicleInformation";
+import Vehicle from "../../../../utils/objects/Veiculo";
 
 export default function MotoristaPendente({ params }) {
     const { id } = params;
     const [driver, setDriver] = useState(Driver);
+    const [vehicle, setVehicle] = useState(Vehicle);
     const [showModal, setShowModal] = useState(false);
     const [disaproveError, setDisaproveError] = useState(false);
     const [disaproveMessage, setDisaproveMessage] = useState();
@@ -25,6 +27,7 @@ export default function MotoristaPendente({ params }) {
             try {
                 const driver = await getDriverById(id);
                 setDriver(driver);
+                setVehicle(driver.vehicle);
             } catch (error) {
                 console.log(error);
             }
@@ -88,7 +91,7 @@ export default function MotoristaPendente({ params }) {
             <section className="flex flex-col w-full p-4 ml-8 space-y-10">
                 <DriverInformation driver={driver} />
                 <hr className="border-2 border-slate-600 rounded" />
-                {driver.vehicle && <VehicleInformation vehicle={driver.vehicle} />}
+                <VehicleInformation vehicle={vehicle} />
                 <hr className="border-2 border-slate-600 rounded" />
 
 

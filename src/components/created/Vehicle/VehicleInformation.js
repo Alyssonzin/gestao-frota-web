@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../ui/carousel";
-import { useEffect } from "react";
 
 export default function VehicleInformation({ vehicle }) {
     const { vehicle_pictures } = vehicle;
