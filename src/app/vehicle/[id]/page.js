@@ -6,7 +6,6 @@ import Veiculo from "@/utils/objects/Veiculo";
 import VehicleInformation from "@/components/created/vehicle/VehicleInformation";
 
 export default function VisualizarVeiculo({ params }) {
-export default function VisualizarVeiculo({ params }) {
     const { id } = params;
     const [vehicle, setVehicle] = useState(Veiculo);
 

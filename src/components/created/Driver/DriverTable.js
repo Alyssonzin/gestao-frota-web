@@ -4,10 +4,10 @@ import { ChevronDown } from "lucide-react";
 import { deleteDriver } from "@/api/driverRoutes";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Modal from "../Modal";
 import Input from "../Input";
 import { createImportantDate } from "../../../api/importantDateRoutes";
+import { useState } from "react";
 
 export default function DriverTable({ data }) {
     const [showModal, setShowModal] = useState(false);
@@ -50,64 +50,63 @@ export default function DriverTable({ data }) {
     }
 
     return (
-        <div>
-            <table className="w-full">
-                <Modal showModal={showModal} closeModal={closeModal}>
-                    <h2 className="text-xl font-bold mb-4">Criar Alerta</h2>
-                    {
-                        importantDateError && <p className="text-red-500">Ocorreu um erro ao criar o alerta.</p>
-                    }
-                    <div className="space-y-5">
-                        <div className="w-1/3">
-                            <Input
-                                type="date"
-                                id="date"
-                                name="date"
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div>
-                            <Input
-                                type="text"
-                                id="description"
-                                name="description"
-                                placeholder="Digite um alerta"
-                                onChange={handleChange}
-                            />
-                        </div>
+        <table className="w-full">
+            <Modal showModal={showModal} closeModal={closeModal}>
+                <h2 className="text-xl font-bold mb-4">Criar Alerta</h2>
+                {
+                    importantDateError && <p className="text-red-500">Ocorreu um erro ao criar o alerta.</p>
+                }
+                <div className="space-y-5">
+                    <div className="w-1/3">
+                        <Input
+                            type="date"
+                            id="date"
+                            name="date"
+                            onChange={handleChange}
+                        />
                     </div>
-
-                    <div className="mt-4 text-right space-x-3">
-                        <button
-                            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
-                            onClick={() => submitImportantDate()}
-                        >
-                            Enviar
-                        </button>
-                        <button
-                            className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
-                            onClick={closeModal}
-                        >
-                            Cancelar
-                        </button>
+                    <div>
+                        <Input
+                            type="text"
+                            id="description"
+                            name="description"
+                            placeholder="Digite um alerta"
+                            onChange={handleChange}
+                        />
                     </div>
-                </Modal>
+                </div>
 
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                    </tr>
-                </thead>
-                <tbody className="text-center">
-                    {
-                        //Se data não for vazio, cria uma linha pra cada item.
-                        data ? data.map((item, index) => (
-                            <tr key={item.id} className={index % 2 == 0 ? "border-t h-14" : "border-t h-14 bg-slate-200"}>
-                                <td>{item.id}</td>
-                                <td>{`${item.user.name} ${item.user.last_name}`}</td>
-                                <td>{item.user.cpf}</td>
+                <div className="mt-4 text-right space-x-3">
+                    <button
+                        className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+                        onClick={() => submitImportantDate()}
+                    >
+                        Enviar
+                    </button>
+                    <button
+                        className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
+                        onClick={closeModal}
+                    >
+                        Cancelar
+                    </button>
+                </div>
+            </Modal>
+
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                </tr>
+            </thead>
+            <tbody className="text-center">
+                {
+                    //Se data não for vazio, cria uma linha pra cada item.
+                    data ? data.map((item, index) => (
+                        <tr key={item.id} className={index % 2 == 0 ? "border-t h-14" : "border-t h-14 bg-slate-200"}>
+                            <td>{item.id}</td>
+                            <td>{`${item.user.name} ${item.user.last_name}`}</td>
+                            <td>{item.user.cpf}</td>
 
                             <td className="space-x-4 w-1/4">
                                 <DropdownMenu>
@@ -125,6 +124,12 @@ export default function DriverTable({ data }) {
                                                 >Visualizar
                                                 </Link>
                                             </DropdownMenuItem>
+                                            {
+                                                !usePathname().includes('pending') ?
+                                                    <DropdownMenuItem className="hover:bg-slate-400 hover:text-white cursor-pointer">
+                                                        <button onClick={() => openModal(item.id)}>Criar Alerta</button>
+                                                    </DropdownMenuItem> : null
+                                            }
                                             <DropdownMenuItem className="hover:bg-red-600 hover:text-white cursor-pointer">
                                                 <button onClick={() => handleDelete(item.id)}>Desativar</button>
                                             </DropdownMenuItem>
