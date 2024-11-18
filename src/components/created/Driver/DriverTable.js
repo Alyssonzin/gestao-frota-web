@@ -4,7 +4,42 @@ import { ChevronDown } from "lucide-react";
 import { deleteDriver } from "@/api/driverRoutes";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Modal from "../Modal";
+import Input from "../Input";
+import { createImportantDate } from "../../../api/importantDateRoutes";
+
 export default function DriverTable({ data }) {
+    const [showModal, setShowModal] = useState(false);
+    const [importantDateError, setImportantDateError] = useState(false);
+    const [importantDate, setImportantDate] = useState();
+
+    const openModal = (driverId) => {
+        setImportantDate({
+            driver_id: driverId
+        });
+        setShowModal(true);
+    }
+
+    const closeModal = () => setShowModal(false);
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setImportantDate({
+            ...importantDate,
+            [name]: value
+        });
+    }
+
+    const submitImportantDate = async (id) => {
+        try {
+            await createImportantDate(importantDate);
+            closeModal();
+        } catch (error) {
+            setImportantDateError(true);
+        }
+    }
+
     const handleDelete = async (id) => {
         try {
             await deleteDriver(id);
@@ -15,22 +50,64 @@ export default function DriverTable({ data }) {
     }
 
     return (
-        <table className="w-full">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                </tr>
-            </thead>
-            <tbody className="text-center">
-                {
-                    //Se data não for vazio, cria uma linha pra cada item.
-                    data ? data.map((item, index) => (
-                        <tr key={item.id} className={index % 2 == 0 ? "border-t h-14" : "border-t h-14 bg-slate-200"}>
-                            <td>{item.id}</td>
-                            <td>{`${item.user.name} ${item.user.last_name}`}</td>
-                            <td>{item.user.cpf}</td>
+        <div>
+            <table className="w-full">
+                <Modal showModal={showModal} closeModal={closeModal}>
+                    <h2 className="text-xl font-bold mb-4">Criar Alerta</h2>
+                    {
+                        importantDateError && <p className="text-red-500">Ocorreu um erro ao criar o alerta.</p>
+                    }
+                    <div className="space-y-5">
+                        <div className="w-1/3">
+                            <Input
+                                type="date"
+                                id="date"
+                                name="date"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                type="text"
+                                id="description"
+                                name="description"
+                                placeholder="Digite um alerta"
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mt-4 text-right space-x-3">
+                        <button
+                            className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+                            onClick={() => submitImportantDate()}
+                        >
+                            Enviar
+                        </button>
+                        <button
+                            className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
+                            onClick={closeModal}
+                        >
+                            Cancelar
+                        </button>
+                    </div>
+                </Modal>
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {
+                        //Se data não for vazio, cria uma linha pra cada item.
+                        data ? data.map((item, index) => (
+                            <tr key={item.id} className={index % 2 == 0 ? "border-t h-14" : "border-t h-14 bg-slate-200"}>
+                                <td>{item.id}</td>
+                                <td>{`${item.user.name} ${item.user.last_name}`}</td>
+                                <td>{item.user.cpf}</td>
 
                             <td className="space-x-4 w-1/4">
                                 <DropdownMenu>

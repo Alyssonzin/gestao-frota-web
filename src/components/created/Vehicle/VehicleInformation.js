@@ -3,30 +3,28 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../ui/carousel";
 
 export default function VehicleInformation({ vehicle }) {
+    const { vehicle_pictures } = vehicle;
 
     return (
         <div className="space-y-10 w-full p-6 bg-gray-50 rounded-lg shadow-lg">
             <div className="flex items-center flex-col mb-6">
                 <Carousel className="border-2 w-1/4 border-gray-300 rounded-lg">
                     <CarouselContent>
-                        <CarouselItem className="flex justify-center">
-                            <Image
-                                src={"/logomarca.jpg"}
-                                alt="Imagem de perfil"
-                                width={300}
-                                height={300}
-                                className="rounded-full shadow-md"
-                            />
-                        </CarouselItem>
-                        <CarouselItem className="flex justify-center">
-                            <Image
-                                src={"/logomarca.jpg"}
-                                alt="Imagem CNH"
-                                width={300}
-                                height={300}
-                                className="rounded-lg shadow-md"
-                            />
-                        </CarouselItem>
+                        {
+                            vehicle_pictures.map((picture, index) => {
+                                return (
+                                    <CarouselItem key={index} className="flex justify-center">
+                                        <Image
+                                            src={picture.url}
+                                            alt="Fotos do veículo"
+                                            width={500}
+                                            height={500}
+                                            className="shadow-md"
+                                        />
+                                    </CarouselItem>
+                                )
+                            })
+                        }
                     </CarouselContent>
                     <CarouselPrevious />
                     <CarouselNext />

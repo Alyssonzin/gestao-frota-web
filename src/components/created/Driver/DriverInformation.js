@@ -13,8 +13,8 @@ export default function DriverInformation({ driver }) {
                             <Image
                                 src={driver.profile_doc_picture || "/logomarca.jpg"}
                                 alt="Imagem de perfil"
-                                width={300}
-                                height={300}
+                                width={500}
+                                height={500}
                                 className="rounded-full shadow-md"
                             />
                         </CarouselItem>
@@ -22,8 +22,8 @@ export default function DriverInformation({ driver }) {
                             <Image
                                 src={driver.cnh_picture || "/logomarca.jpg"}
                                 alt="Imagem CNH"
-                                width={300}
-                                height={300}
+                                width={500}
+                                height={500}
                                 className="rounded-lg shadow-md"
                             />
                         </CarouselItem>
