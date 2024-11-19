@@ -15,7 +15,7 @@ export default function DriverInformation({ driver }) {
                                 alt="Imagem de perfil"
                                 width={500}
                                 height={500}
-                                className="rounded-full shadow-md"
+                                className="rounded-full shadow-md contain-size"
                             />
                         </CarouselItem>
                         <CarouselItem className="flex justify-center">
@@ -24,7 +24,7 @@ export default function DriverInformation({ driver }) {
                                 alt="Imagem CNH"
                                 width={500}
                                 height={500}
-                                className="rounded-lg shadow-md"
+                                className="rounded-lg shadow-md contain-size"
                             />
                         </CarouselItem>
                     </CarouselContent>

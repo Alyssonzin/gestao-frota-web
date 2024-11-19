@@ -21,7 +21,7 @@ export default function VisualizarVeiculo({ params }) {
         <main className="flex min-h-screen bg-gray-200">
             <NavAdmin />
             <section className="flex flex-col items-center w-full p-4 ml-8 space-y-6">
-                <VehicleInformation vehicle={vehicle} />
+                <VehicleInformation vehicle={vehicle} vehicle_pictures={vehicle.vehicle_pictures}/>
             </section>
         </main>
     )

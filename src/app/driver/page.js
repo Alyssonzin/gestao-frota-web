@@ -2,21 +2,21 @@
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import { useState, useEffect } from "react";
-import { getDrivers } from "@/api/driverRoutes";
+import { getDrivers, searchDriver } from "@/api/driverRoutes";
 import DriverTable from "@/components/created/driver/DriverTable";
 
 export default function Motoristas() {
     const [pesquisa, setPesquisa] = useState('');
-    const [motoristas, setMotoristas] = useState();
+    const [drivers, setDrivers] = useState();
 
     useEffect(() => {
         const getMotoristas = async () => {
             try {
                 const data = await getDrivers();
-                const driversAproved = data.filter(driver => driver.aproved);
-                setMotoristas(driversAproved);
+                const driversApproved = data.filter(driver => driver.approved);
+                setDrivers(driversApproved);
             } catch (error) {
-                setMotoristas();
+                setDrivers();
             }
         }
         getMotoristas();
@@ -28,11 +28,17 @@ export default function Motoristas() {
     }
 
     //Busca ao pressionar ENTER
-    const handleSearch = (event) => {
+    const handleSearch = async (event) => {
         const { key } = event;
         if (key === 'Enter') {
-            console.log(pesquisa);
+            try {
+                const driversFounded = await searchDriver(pesquisa);
+                setDrivers(driversFounded);
+            } catch {
+                setDrivers();
+            }
         }
+
     }
 
     return (
@@ -54,7 +60,7 @@ export default function Motoristas() {
                 </div>
 
                 <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                    <DriverTable data={motoristas} />
+                    <DriverTable data={drivers} />
                 </div>
             </section>
         </main>

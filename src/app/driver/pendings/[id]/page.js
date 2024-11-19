@@ -91,7 +91,7 @@ export default function MotoristaPendente({ params }) {
             <section className="flex flex-col w-full p-4 ml-8 space-y-10">
                 <DriverInformation driver={driver} />
                 <hr className="border-2 border-slate-600 rounded" />
-                <VehicleInformation vehicle={vehicle} />
+                <VehicleInformation vehicle={vehicle} vehicle_pictures={vehicle.vehicle_pictures} />
                 <hr className="border-2 border-slate-600 rounded" />
 
 
