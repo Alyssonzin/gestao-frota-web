@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../ui/carousel";
 
 export default function VehicleInformation({ vehicle }) {
-    const vehicle_pictures = vehicle.pictures || [];
+    const vehicle_pictures = vehicle.vehicle_pictures || [];
     
     return (
         <div className="space-y-10 w-full p-6 bg-gray-50 rounded-lg shadow-lg">
