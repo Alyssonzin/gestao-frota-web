@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../ui/carousel";
 
 export default function DriverInformation({ driver }) {
-
     return (
         <div className="space-y-10 w-full p-6 bg-gray-50 rounded-lg shadow-lg">
             <div className="flex items-center flex-col mb-6">
@@ -46,7 +45,6 @@ export default function DriverInformation({ driver }) {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

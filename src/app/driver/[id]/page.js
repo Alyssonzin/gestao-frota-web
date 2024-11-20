@@ -4,10 +4,12 @@ import DriverInformation from "../../../components/created/driver/DriverInformat
 import Driver from "../../../utils/objects/Motorista";
 import { getDriverById } from "../../../api/driverRoutes";
 import NavAdmin from "../../../components/created/NavAdmin";
+import Loading from "../../../components/created/Loading";
 
 export default function VisualizarMotorista({ params }) {
     const { id } = params;
     const [driver, setDriver] = useState(Driver);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchDriverById = async () => {
@@ -26,7 +28,7 @@ export default function VisualizarMotorista({ params }) {
             <NavAdmin />
 
             <section className="flex flex-col w-full p-4 ml-8 space-y-10">
-                <DriverInformation driver={driver} />
+                {loading ? <Loading /> : <DriverInformation driver={driver} />}
             </section>
         </main>
     )

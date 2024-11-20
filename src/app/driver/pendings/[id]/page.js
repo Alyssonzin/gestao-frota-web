@@ -9,6 +9,7 @@ import Modal from "../../../../components/created/Modal";
 import DriverInformation from "../../../../components/created/driver/DriverInformation";
 import VehicleInformation from "../../../../components/created/vehicle/VehicleInformation";
 import Vehicle from "../../../../utils/objects/Veiculo";
+import Loading from "../../../../components/created/Loading";
 
 export default function MotoristaPendente({ params }) {
     const { id } = params;
@@ -17,6 +18,7 @@ export default function MotoristaPendente({ params }) {
     const [showModal, setShowModal] = useState(false);
     const [disaproveError, setDisaproveError] = useState(false);
     const [disaproveMessage, setDisaproveMessage] = useState();
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     const openModal = () => setShowModal(true);
@@ -30,10 +32,12 @@ export default function MotoristaPendente({ params }) {
                 setVehicle(driver.vehicle);
             } catch (error) {
                 console.log(error);
+            } finally {
+                setLoading(false);
             }
         }
         fetchDriverById();
-    }, []);
+    }, [])
 
     const handleAprove = async () => {
         try {
@@ -88,18 +92,23 @@ export default function MotoristaPendente({ params }) {
                 </div>
             </Modal>
 
+
             <section className="flex flex-col w-full p-4 ml-8 space-y-10">
-                <DriverInformation driver={driver} />
-                <hr className="border-2 border-slate-600 rounded" />
-                <VehicleInformation vehicle={vehicle} vehicle_pictures={vehicle.vehicle_pictures} />
-                <hr className="border-2 border-slate-600 rounded" />
-
-
-                <div className="flex justify-center text-white">
-                    <button onClick={handleAprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
-                    <button onClick={openModal} className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
-                </div>
+                {
+                    loading ? <Loading /> :
+                        <div>
+                            <DriverInformation driver={driver} />
+                            <hr className="border-2 border-slate-600 rounded" />
+                            <VehicleInformation vehicle={vehicle} />
+                            <hr className="border-2 border-slate-600 rounded" />
+                            <div className="flex justify-center text-white">
+                                <button onClick={handleAprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
+                                <button onClick={openModal} className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
+                            </div>
+                        </div>
+                }
             </section>
+
         </main>
     )
 }
