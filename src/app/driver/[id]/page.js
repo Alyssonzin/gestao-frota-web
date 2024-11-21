@@ -18,6 +18,8 @@ export default function VisualizarMotorista({ params }) {
                 setDriver(driver);
             } catch (error) {
                 console.log(error);
+            } finally {
+                setLoading(false);
             }
         }
         fetchDriverById();

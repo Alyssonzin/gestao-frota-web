@@ -17,6 +17,7 @@ export default function MotoristaPendente({ params }) {
     const [vehicle, setVehicle] = useState(Vehicle);
     const [showModal, setShowModal] = useState(false);
     const [disaproveError, setDisaproveError] = useState(false);
+    const [aproveError, setAproveError] = useState(false);
     const [disaproveMessage, setDisaproveMessage] = useState();
     const [loading, setLoading] = useState(true);
     const router = useRouter();
@@ -41,10 +42,11 @@ export default function MotoristaPendente({ params }) {
 
     const handleAprove = async () => {
         try {
+            setAproveError(false);
             await aproveDriver(id);
-            router.push("/drivers");
+            router.push("/driver");
         } catch (error) {
-
+            setAproveError(true);
         }
     }
 
@@ -105,6 +107,7 @@ export default function MotoristaPendente({ params }) {
                                 <button onClick={handleAprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
                                 <button onClick={openModal} className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
                             </div>
+                            {aproveError && <p className="text-red-500 text-center">Ocorreu um erro ao aprovar este motorista</p>}
                         </div>
                 }
             </section>
