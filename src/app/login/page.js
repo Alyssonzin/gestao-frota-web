@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
     const [form, setForm] = useState();
+    const [loginError, setLoginError] = useState(false);
     const router = useRouter();
 
     const handleChange = (event) => {
@@ -21,15 +22,12 @@ export default function Login() {
     }
 
     const handleSubmit = async (event) => {
-        setForm({
-            ...form,
-            email: form.email.toLowerCase(),
-        });
-        
         try {
+            setLoginError(false);
             await login(form);
             router.push('/driver');
         } catch (error) {
+            setLoginError(true);
             console.error(error);
         }
     }
@@ -65,6 +63,7 @@ export default function Login() {
                     >
                         Entrar
                     </button>
+                    {loginError && <p className="text-red-500">Erro ao efetuar o login</p>}
                     <Link href='#' className="hover:text-cyan-400 hover:underline">Esqueceu a senha?</Link>
                     <CheckboxWithText text={'Lembrar-me'} />
                 </form>
