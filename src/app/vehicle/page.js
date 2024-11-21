@@ -1,22 +1,26 @@
 "use client"
-import Link from "next/link";
 import Input from "@/components/created/Input";
 import NavAdmin from "@/components/created/NavAdmin";
 import { useState, useEffect } from "react";
 import { getVehicles } from "@/api/vehicleRouter";
 import VehicleTable from "@/components/created/vehicle/VehicleTable";
+import Loading from "@/components/created/Loading";
 
 export default function Veiculos() {
     const [pesquisa, setPesquisa] = useState('');
-    const [veiculos, setVeiculos] = useState();
+    const [vehicles, setVehicles] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getVeiculos = async () => {
             try {
+                setLoading(true);
                 const data = await getVehicles();
-                setVeiculos(data);
+                setVehicles(data);
             } catch (error) {
-                setVeiculos();
+                setVehicles();
+            } finally {
+                setLoading(false);
             }
         }
         getVeiculos();
@@ -53,7 +57,7 @@ export default function Veiculos() {
                 </div>
 
                 <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                    <VehicleTable data={veiculos} />
+                    {loading ? <Loading /> : <VehicleTable data={vehicles} />}
                 </div>
             </section>
         </main>

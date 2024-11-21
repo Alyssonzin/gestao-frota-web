@@ -4,10 +4,12 @@ import NavAdmin from "@/components/created/NavAdmin";
 import { useState, useEffect } from "react";
 import { getDrivers, searchDriver } from "@/api/driverRoutes";
 import DriverTable from "@/components/created/driver/DriverTable";
+import Loading from "../../components/created/Loading";
 
 export default function Motoristas() {
     const [pesquisa, setPesquisa] = useState('');
     const [drivers, setDrivers] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getMotoristas = async () => {
@@ -17,6 +19,8 @@ export default function Motoristas() {
                 setDrivers(driversApproved);
             } catch (error) {
                 setDrivers();
+            } finally {
+                setLoading(false);
             }
         }
         getMotoristas();
@@ -35,10 +39,9 @@ export default function Motoristas() {
                 const driversFounded = await searchDriver(pesquisa);
                 setDrivers(driversFounded);
             } catch {
-                setDrivers();
+                console.log('Erro ao buscar motoristas');
             }
         }
-
     }
 
     return (
@@ -60,7 +63,7 @@ export default function Motoristas() {
                 </div>
 
                 <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                    <DriverTable data={drivers} />
+                    {loading ? <Loading /> : <DriverTable data={drivers} />}
                 </div>
             </section>
         </main>

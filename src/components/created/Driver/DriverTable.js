@@ -31,8 +31,9 @@ export default function DriverTable({ data }) {
         });
     }
 
-    const submitImportantDate = async (id) => {
+    const submitImportantDate = async () => {
         try {
+            setImportantDateError(false);
             await createImportantDate(importantDate);
             closeModal();
         } catch (error) {

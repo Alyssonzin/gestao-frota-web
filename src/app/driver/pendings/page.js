@@ -4,18 +4,23 @@ import NavAdmin from "@/components/created/NavAdmin";
 import Input from "@/components/created/Input";
 import DriverTable from "@/components/created/driver/DriverTable";
 import { getPendingDrivers } from "@/api/driverRoutes";
+import Loading from "../../../components/created/Loading";
 
 export default function Pendentes() {
     const [pesquisa, setPesquisa] = useState('');
-    const [motoristas, setMotoristas] = useState();
+    const [drivers, setDrivers] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getMotoristasPendentes = async () => {
             try {
+                setLoading(true);
                 const data = await getPendingDrivers();
-                setMotoristas(data);
+                setDrivers(data);
             } catch (error) {
-                
+
+            } finally {
+                setLoading(false);
             }
         }
         getMotoristasPendentes();
@@ -53,7 +58,7 @@ export default function Pendentes() {
                 </div>
 
                 <div className="flex flex-col space-y-4 bg-white h-[85%] overflow-y-scroll shadow-md rounded-xl p-2 pb-3">
-                    <DriverTable data={motoristas} />
+                    {loading ? <Loading /> : <DriverTable data={drivers} />}
                 </div>
             </section>
         </main>
