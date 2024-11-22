@@ -21,7 +21,7 @@ export default function Login() {
         });
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async () => {
         try {
             setLoginError(false);
             await login(form);
