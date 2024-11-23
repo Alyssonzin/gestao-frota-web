@@ -1,7 +1,7 @@
 "use client";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react";
-import { deleteDriver } from "@/api/driverRoutes";
+import { deleteDriver, disableDriver } from "@/api/driverRoutes";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Modal from "../Modal";
@@ -43,9 +43,11 @@ export default function DriverTable({ data }) {
 
     const handleDelete = async (id) => {
         try {
-            await deleteDriver(id);
+            await disableDriver(id);
             window.location.reload();
         } catch (error) {
+            console.log(error);
+            
             alert('Erro ao excluir motorista!');
         }
     }

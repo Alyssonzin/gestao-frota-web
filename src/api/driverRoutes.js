@@ -72,8 +72,8 @@ export const updateDriver = async (id, data) => {
     })
 }
 
-export const deleteDriver = async (id) => {
-    return api.delete(`/driver/${id}`).then(res => {
+export const disableDriver = async (id) => {
+    return api.put(`/driver/disable/${id}`).then(res => {
         return res.data;
     }).catch(error => {
         throw error;
