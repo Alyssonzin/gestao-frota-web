@@ -1,4 +1,8 @@
 import { NextResponse } from 'next/server';
+//Seta as rotas que serão verificadas pelo middleware
+export const config = {
+    matcher: ['/driver/:path*', '/vehicle/:path*'],
+}
 
 export function middleware(request) {
     const sessionCookie = request.cookies.get('email');
@@ -8,9 +12,4 @@ export function middleware(request) {
         return NextResponse.redirect(loginUrl);
     }
     return NextResponse.next();
-}
-
-//Seta as rotas que serão verificadas pelo middleware
-export const config = {
-    matcher: ['/driver/:path*', '/vehicle/:path*'],
 }

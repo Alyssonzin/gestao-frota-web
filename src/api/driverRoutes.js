@@ -40,8 +40,16 @@ export const getDriverById = async (id) => {
     })
 }
 
-export const aproveDriver = async (id) => {
+export const approveDriver = async (id) => {
     return api.put(`/driver/${id}/approve`).then(res => {
+        return res.data;
+    }).catch(error => {
+        throw error;
+    })
+}
+
+export const disapproveDriver = async (data) => {
+    return api.post(`/declineMessage`, data).then(res => {
         return res.data;
     }).catch(error => {
         throw error;

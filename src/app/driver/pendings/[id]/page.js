@@ -2,7 +2,7 @@
 
 import NavAdmin from "@/components/created/NavAdmin";
 import { useEffect, useState } from "react";
-import { getDriverById, aproveDriver } from "@/api/driverRoutes";
+import { getDriverById, approveDriver as approveDriver, disapproveDriver } from "@/api/driverRoutes";
 import { useRouter } from "next/navigation";
 import Driver from "@/utils/objects/Motorista";
 import Modal from "../../../../components/created/Modal";
@@ -16,9 +16,9 @@ export default function MotoristaPendente({ params }) {
     const [driver, setDriver] = useState(Driver);
     const [vehicle, setVehicle] = useState(Vehicle);
     const [showModal, setShowModal] = useState(false);
-    const [disaproveError, setDisaproveError] = useState(false);
-    const [aproveError, setAproveError] = useState(false);
-    const [disaproveMessage, setDisaproveMessage] = useState();
+    const [disapproveError, setDisapproveError] = useState(false);
+    const [approveError, setApproveError] = useState(false);
+    const [message, setMessage] = useState();
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
@@ -40,26 +40,27 @@ export default function MotoristaPendente({ params }) {
         fetchDriverById();
     }, [])
 
-    const handleAprove = async () => {
+    const handleApprove = async () => {
         try {
-            setAproveError(false);
-            await aproveDriver(id);
+            setApproveError(false);
+            await approveDriver(id);
             router.push("/driver");
         } catch (error) {
-            setAproveError(true);
+            setApproveError(true);
         }
     }
 
     const handleChangeMessage = (event) => {
-        setDisaproveMessage(event.target.value);
+        setMessage(event.target.value);
     }
 
-    const handleDisaprove = async () => {
+    const handleDisapprove = async () => {
         try {
-            await aproveDriver(id, disaproveMessage);
-            router.push("/drivers");
+            setApproveError(false);
+            await disapproveDriver({ driver_id: id, message });
+            router.push("/driver");
         } catch (error) {
-            setDisaproveError(true);
+            setDisapproveError(true);
         }
     }
 
@@ -71,7 +72,7 @@ export default function MotoristaPendente({ params }) {
                 <h2 className="text-xl font-bold mb-4">Recusar motorista</h2>
                 <p>Deixe uma mensagem:</p>
                 {
-                    disaproveError && <p className="text-red-500">Ocorreu um erro ao reprovar este motorista.</p>
+                    disapproveError && <p className="text-red-500">Ocorreu um erro ao reprovar este motorista.</p>
                 }
                 <textarea
                     className="border bg-slate-200 mt-3 p-2 w-full h-52 rounded-xl resize-none"
@@ -81,7 +82,7 @@ export default function MotoristaPendente({ params }) {
                 <div className="mt-4 text-right space-x-3">
                     <button
                         className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
-                        onClick={handleDisaprove}
+                        onClick={handleDisapprove}
                     >
                         Enviar
                     </button>
@@ -104,10 +105,10 @@ export default function MotoristaPendente({ params }) {
                             <VehicleInformation vehicle={vehicle} />
                             <hr className="border-2 border-slate-600 rounded" />
                             <div className="flex justify-center text-white">
-                                <button onClick={handleAprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
+                                <button onClick={handleApprove} className="bg-green-500 hover:bg-green-700 w-[30%] m-4 p-2 rounded transition">Aprovar</button>
                                 <button onClick={openModal} className="bg-red-500 hover:bg-red-700 w-[30%] m-4 p-2 rounded transition">Recusar</button>
                             </div>
-                            {aproveError && <p className="text-red-500 text-center">Ocorreu um erro ao aprovar este motorista</p>}
+                            {approveError && <p className="text-red-500 text-center">Ocorreu um erro ao aprovar este motorista</p>}
                         </div>
                 }
             </section>
