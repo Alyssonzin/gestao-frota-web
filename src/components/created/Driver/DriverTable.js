@@ -41,14 +41,23 @@ export default function DriverTable({ data }) {
         }
     }
 
-    const handleDelete = async (id) => {
+    const handleDisable = async (id) => {
         try {
             await disableDriver(id);
             window.location.reload();
         } catch (error) {
             console.log(error);
-            
-            alert('Erro ao excluir motorista!');
+            alert('Erro ao desativar este motorista!');
+        }
+    }
+
+    const handleDelete = async (id) => {
+        try {
+            await deleteDriver(id);
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+            alert('Erro ao excluir o motorista!');
         }
     }
 
@@ -133,9 +142,16 @@ export default function DriverTable({ data }) {
                                                         <button onClick={() => openModal(item.id)}>Criar Alerta</button>
                                                     </DropdownMenuItem> : null
                                             }
-                                            <DropdownMenuItem className="hover:bg-red-600 hover:text-white cursor-pointer">
-                                                <button onClick={() => handleDelete(item.id)}>Desativar</button>
-                                            </DropdownMenuItem>
+                                            {
+                                                !usePathname().includes('pending') ?
+                                                    <DropdownMenuItem className="hover:bg-red-600 hover:text-white cursor-pointer">
+                                                        <button onClick={() => handleDisable(item.id)}>Desativar</button>
+                                                    </DropdownMenuItem>
+                                                    :
+                                                    <DropdownMenuItem className="hover:bg-red-600 hover:text-white cursor-pointer">
+                                                        <button onClick={() => handleDelete(item.id)}>Excluir</button>
+                                                    </DropdownMenuItem>
+                                            }
                                         </DropdownMenuGroup>
                                     </DropdownMenuContent>
                                 </DropdownMenu>

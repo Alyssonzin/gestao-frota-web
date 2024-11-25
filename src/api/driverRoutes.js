@@ -80,6 +80,14 @@ export const disableDriver = async (id) => {
     })
 }
 
+export const deleteDriver = async (id) => {
+    return api.delete(`/driver/${id}`).then(res => {
+        return res.data;
+    }).catch(error => {
+        throw error;
+    })
+}
+
 export const searchDriver = async (search) => {
     return api.get(`/driver/search/${search}`).then(res => {
         const drivers = res.data;
