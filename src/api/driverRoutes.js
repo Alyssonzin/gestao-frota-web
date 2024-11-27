@@ -20,7 +20,7 @@ export const getPendingDrivers = async () => {
         drivers.map(driver => {
             driver.user.cpf = cpfMask(driver.user.cpf); //Formata o CPF
             driver.user.phone = phoneMask(driver.user.phone); //Formata o telefone
-            driver.user.birthdate = dateFormat(driver.user.birthdate) //Formata a data de nascimento
+            driver.user.birth_date = dateFormat(driver.user.birth_date) //Formata a data de nascimento
         });
         return drivers;
     }).catch(error => {
@@ -33,7 +33,7 @@ export const getDriverById = async (id) => {
         const driver = res.data;
         driver.user.cpf = cpfMask(driver.user.cpf); //Formata o CPF
         driver.user.phone = phoneMask(driver.user.phone); //Formata o telefone
-        driver.user.birthdate = dateFormat(driver.user.birthdate) //Formata a data de nascimento
+        driver.user.birth_date = dateFormat(driver.user.birth_date) //Formata a data de nascimento
         return driver;
     }).catch(error => {
         throw error;
@@ -94,7 +94,7 @@ export const searchDriver = async (search) => {
         drivers.forEach(driver => {
             driver.user.cpf = cpfMask(driver.user.cpf); //Formata o CPF
             driver.user.phone = phoneMask(driver.user.phone); //Formata o telefone
-            driver.user.birthdate = dateFormat(driver.user.birthdate) //Formata a data de nascimento
+            driver.user.birth_date = dateFormat(driver.user.birth_date) //Formata a data de nascimento
         });
         return drivers;
     }).catch(error => {
