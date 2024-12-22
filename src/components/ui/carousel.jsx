@@ -3,7 +3,7 @@ import * as React from "react"
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "../../lib/utils";
 import { Button } from "./button";
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
+import { ArrowLeftIcon, ArrowRightIcon } from "../../../node_modules/@radix-ui/react-icons";
 
 const CarouselContext = React.createContext(null)
 
