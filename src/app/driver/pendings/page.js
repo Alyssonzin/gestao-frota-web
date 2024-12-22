@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import NavAdmin from "../../../components/created/NavAdmin";
 import Input from "../../../components/created/Input";
-import DriverTable from "../../../components/created/driver/DriverTable";
+import DriverTable from "../../../components/created/Driver/DriverTable";
 import { getPendingDrivers } from "../../../api/driverRoutes";
 import Loading from "../../../components/created/Loading";
 

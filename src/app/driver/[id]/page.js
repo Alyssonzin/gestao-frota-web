@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import DriverInformation from "../../../components/created/driver/DriverInformation";
+import DriverInformation from "../../../components/created/Driver/DriverInformation";
 import Driver from "../../../utils/objects/Motorista";
 import { getDriverById } from "../../../api/driverRoutes";
 import NavAdmin from "../../../components/created/NavAdmin";

@@ -6,8 +6,8 @@ import { getDriverById, approveDriver as approveDriver, disapproveDriver } from 
 import { useRouter } from "next/navigation";
 import Driver from "../../../../utils/objects/Motorista";
 import Modal from "../../../../components/created/Modal";
-import DriverInformation from "../../../../components/created/driver/DriverInformation";
-import VehicleInformation from "../../../../components/created/vehicle/VehicleInformation";
+import DriverInformation from "../../../../components/created/Driver/DriverInformation";
+import VehicleInformation from "../../../../components/created/Vehicle/VehicleInformation";
 import Vehicle from "../../../../utils/objects/Veiculo";
 import Loading from "../../../../components/created/Loading";
 

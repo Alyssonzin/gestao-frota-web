@@ -3,7 +3,7 @@ import Input from "../../components/created/Input";
 import NavAdmin from "../../components/created/NavAdmin";
 import { useState, useEffect } from "react";
 import { getDrivers, searchDriver } from "../../api/driverRoutes";
-import DriverTable from "../../components/created/driver/DriverTable";
+import DriverTable from "../../components/created/Driver/DriverTable";
 import Loading from "../../components/created/Loading";
 
 export default function Motoristas() {

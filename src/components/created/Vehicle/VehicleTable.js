@@ -1,5 +1,5 @@
 "use client";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "../../../components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "../../ui/dropdown-menu"
 import { ChevronDown } from "lucide-react";
 import { deleteVehicle } from "../../../api/vehicleRouter";
 import Link from "next/link";

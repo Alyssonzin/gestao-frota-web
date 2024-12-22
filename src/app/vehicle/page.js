@@ -3,7 +3,7 @@ import Input from "../../components/created/Input";
 import NavAdmin from "../../components/created/NavAdmin";
 import { useState, useEffect } from "react";
 import { getVehicles } from "../../api/vehicleRouter";
-import VehicleTable from "../../components/created/vehicle/VehicleTable";
+import VehicleTable from "../../components/created/Vehicle/VehicleTable";
 import Loading from "../../components/created/Loading";
 
 export default function Veiculos() {

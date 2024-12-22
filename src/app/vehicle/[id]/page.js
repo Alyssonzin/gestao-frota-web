@@ -3,7 +3,7 @@ import NavAdmin from "../../../components/created/NavAdmin";
 import { useEffect, useState } from "react";
 import { getVehicleById } from "../../../api/vehicleRouter";
 import Veiculo from "../../../utils/objects/Veiculo";
-import VehicleInformation from "../../../components/created/vehicle/VehicleInformation";
+import VehicleInformation from "../../../components/created/Vehicle/VehicleInformation";
 import Loading from "../../../components/created/Loading";
 
 export default function VisualizarVeiculo({ params }) {
