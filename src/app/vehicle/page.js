@@ -1,10 +1,10 @@
 "use client"
-import Input from "@/components/created/Input";
-import NavAdmin from "@/components/created/NavAdmin";
+import Input from "../../components/created/Input";
+import NavAdmin from "../../components/created/NavAdmin";
 import { useState, useEffect } from "react";
-import { getVehicles } from "@/api/vehicleRouter";
-import VehicleTable from "@/components/created/vehicle/VehicleTable";
-import Loading from "@/components/created/Loading";
+import { getVehicles } from "../../api/vehicleRouter";
+import VehicleTable from "../../components/created/vehicle/VehicleTable";
+import Loading from "../../components/created/Loading";
 
 export default function Veiculos() {
     const [pesquisa, setPesquisa] = useState('');
@@ -43,6 +43,7 @@ export default function Veiculos() {
             <NavAdmin />
 
             <section className="w-full p-4 ml-8 space-y-6">
+            <h1 className="font-bold text-xl">Veículos cadastrados</h1>
                 <div className="flex justify-between gap-6">
                     <div className="w-[90%]">
                         <Input

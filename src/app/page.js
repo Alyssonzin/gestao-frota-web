@@ -1,5 +1,5 @@
 
-import NavHome from "@/components/created/NavHome";
+import NavHome from "../components/created/NavHome";
 
 export default function Home() {
   return (

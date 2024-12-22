@@ -1,10 +1,10 @@
 "use client"
 
-import NavAdmin from "@/components/created/NavAdmin";
+import NavAdmin from "../../../../components/created/NavAdmin";
 import { useEffect, useState } from "react";
-import { getDriverById, approveDriver as approveDriver, disapproveDriver } from "@/api/driverRoutes";
+import { getDriverById, approveDriver as approveDriver, disapproveDriver } from "../../../../api/driverRoutes";
 import { useRouter } from "next/navigation";
-import Driver from "@/utils/objects/Motorista";
+import Driver from "../../../../utils/objects/Motorista";
 import Modal from "../../../../components/created/Modal";
 import DriverInformation from "../../../../components/created/driver/DriverInformation";
 import VehicleInformation from "../../../../components/created/vehicle/VehicleInformation";

@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link"
-import { CheckboxWithText } from "@/components/created/Checkbox"
-import Input from "@/components/created/Input"
-import NavHome from "@/components/created/NavHome"
-import InputPassword from "@/components/created/InputPassword"
+import { CheckboxWithText } from "../../components/created/Checkbox";
+import Input from "../../components/created/Input";
+import NavHome from "../../components/created/NavHome";
+import InputPassword from "../../components/created/InputPassword";
 import { useState } from "react"
 import { login } from "../../api/userRoutes";
 import { useRouter } from "next/navigation";

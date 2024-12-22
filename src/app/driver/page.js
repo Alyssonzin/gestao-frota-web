@@ -1,9 +1,9 @@
 "use client";
-import Input from "@/components/created/Input";
-import NavAdmin from "@/components/created/NavAdmin";
+import Input from "../../components/created/Input";
+import NavAdmin from "../../components/created/NavAdmin";
 import { useState, useEffect } from "react";
-import { getDrivers, searchDriver } from "@/api/driverRoutes";
-import DriverTable from "@/components/created/driver/DriverTable";
+import { getDrivers, searchDriver } from "../../api/driverRoutes";
+import DriverTable from "../../components/created/driver/DriverTable";
 import Loading from "../../components/created/Loading";
 
 export default function Motoristas() {
@@ -49,6 +49,7 @@ export default function Motoristas() {
             <NavAdmin />
 
             <section className="w-full p-4 ml-8 space-y-6">
+                <h1 className="font-bold text-xl">Motoristas cadastrados</h1>
                 <div className="flex justify-between gap-6">
                     <div className="w-[90%]">
                         <Input

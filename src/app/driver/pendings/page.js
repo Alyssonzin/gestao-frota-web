@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import NavAdmin from "@/components/created/NavAdmin";
-import Input from "@/components/created/Input";
-import DriverTable from "@/components/created/driver/DriverTable";
-import { getPendingDrivers } from "@/api/driverRoutes";
+import NavAdmin from "../../../components/created/NavAdmin";
+import Input from "../../../components/created/Input";
+import DriverTable from "../../../components/created/driver/DriverTable";
+import { getPendingDrivers } from "../../../api/driverRoutes";
 import Loading from "../../../components/created/Loading";
 
 export default function Pendentes() {
@@ -44,6 +44,7 @@ export default function Pendentes() {
             <NavAdmin />
 
             <section className="w-full p-4 ml-8 space-y-6">
+            <h1 className="font-bold text-xl">Motoristas pendentes</h1>
                 <div className="flex justify-between gap-6">
                     <div className="w-[90%]">
                         <Input
