@@ -1,4 +1,4 @@
-import { cpfMask, dateMask, phoneMask } from "@/utils/Masks";
+import { cpfMask, dateMask, phoneMask } from "../utils/Masks";
 import { api } from "./api";
 import { dateFormat } from "../utils/dateFormat";
 

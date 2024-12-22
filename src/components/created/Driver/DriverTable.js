@@ -1,7 +1,7 @@
 "use client";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "../../ui/dropdown-menu"
 import { ChevronDown } from "lucide-react";
-import { deleteDriver, disableDriver } from "@/api/driverRoutes";
+import { deleteDriver, disableDriver } from "../../../api/driverRoutes";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Modal from "../Modal";
